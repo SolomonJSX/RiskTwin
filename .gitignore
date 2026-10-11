@@ -1,0 +1,26 @@
+# OS
+Thumbs.db
+.DS_Store
+# IDE
+.vscode/
+.idea/
+*.suo
+*.user
+# .NET
+bin/
+obj/
+*.userprefs
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+# Node/Web
+node_modules/
+.next/
+dist/
+build/
+# Local env
+.env
+.env.local

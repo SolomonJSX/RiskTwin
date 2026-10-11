@@ -1,0 +1,127 @@
+syntax = "proto3";
+
+package risktwin.ml;
+
+option csharp_namespace = "RiskTwin.CoreBackend.Grpc";
+
+service ScoringService {
+  rpc EvaluateRisk (RiskEvaluationRequest) returns (RiskEvaluationResponse);
+}
+
+service RestructuringOptimizerService {
+  rpc OptimizeRestructuring (OptimizationRequest) returns (OptimizationResponse);
+  
+  // Сквозной метод со слайда 5: скоринг + SHAP + генерация 3 сценариев за один вызов
+  rpc EvaluateAndOptimize (FullRestructuringAnalysisRequest) returns (FullRestructuringAnalysisResponse);
+}
+
+message FullRestructuringAnalysisRequest {
+  RiskEvaluationRequest risk_features = 1;
+  OptimizationRequest loan_details = 2;
+}
+
+message FullRestructuringAnalysisResponse {
+  string client_token = 1;
+  double p_default_30d = 2;
+  double p_default_60d = 3;
+  bool is_high_risk = 4;
+  RiskLevel risk_level = 5;                // LOW, MODERATE, HIGH_EARLY_WARNING, CRITICAL
+  int32 predicted_days_to_default = 6;    // Прогноз срока до первой просрочки (Survival Analysis)
+  repeated FeatureImportance top_risk_drivers = 7;
+  repeated RestructuringScenario scenarios = 8;
+  double solver_execution_time_ms = 9;    // Время работы солвера OR-Tools
+}
+
+// Запрос скоринга со всеми 5 группами поведенческих фичей
+message RiskEvaluationRequest {
+  string client_token = 1;
+
+  // Группа 1: Динамика и устойчивость доходов (Income Stability)
+  double salary_trend_ratio_3m_vs_6m = 2; // Отношение зарплаты за 3м к 6м (< 0.8 триггер)
+  int32 salary_inflow_delay_days = 3;     // Задержка дня выплаты зарплаты
+  double inflow_source_entropy = 4;       // Энтропия источников поступлений (дробление на P2P)
+  double net_cashflow_margin_30d = 5;     // (Inflows - Outflows) / Inflows
+
+  // Группа 2: Транзакционные маркеры стресса (Liquidity Stress)
+  double atm_cash_out_intensity = 6;      // Доля снятия наличных к безналу
+  double credit_to_debit_transfer_ratio = 7; // Переводы с кредиток/овердрафтов на дебет
+  double essential_spending_share_trend = 8; // Доля трат на еду/аптеки vs развлечения
+  int32 balance_zero_out_frequency = 9;   // Дней в месяце с остатком < 1000 KZT
+  bool mfo_gambling_tag_presence = 10;    // Флаг платежей в МФО / гемблинг
+
+  // Группа 3: Телеметрия ДБО (App Engagement & Anxiety)
+  double balance_check_frequency_surge = 11; // Всплеск открытий приложения для проверки баланса
+  double loan_schedule_screen_dwell_time = 12; // Время на экране графика платежей (сек)
+  double support_chat_keyword_velocity = 13; // Частота слов "отсрочка/штраф/арест" в поддержке
+  int32 microloan_calculator_views = 14;     // Просмотры калькулятора микрозаймов
+
+  // Группа 4: Нагрузка долговыми инструментами (Debt Service & Multi-banking)
+  double dti_dynamic_estimate = 15;        // Debt-to-Income (платежи / доход)
+  int32 active_bnpl_installment_count = 16;// Количество рассрочек (0-0-12 / 0-0-24)
+  double grace_period_exhaustion_rate = 17; // Доля карт без грейса (только мин. платеж)
+  int32 early_payment_decay_days = 18;    // Деградация дисциплины (раньше за 5 дней, теперь впритык)
+
+  // Группа 5: Скользящие окна (7d, 30d, 90d)
+  double median_daily_balance_7d = 19;
+  double median_daily_balance_30d = 20;
+  double median_daily_balance_90d = 21;
+  double p2p_outflow_sum_7d = 22;
+  double p2p_outflow_sum_30d = 23;
+  int32 failed_autopay_attempts_30d = 24;  // Неудачные списания автоплатежей
+}
+
+message RiskEvaluationResponse {
+  string client_token = 1;
+  double p_default_30d = 2;              // Вероятность дефолта за 30 дней (0.0 - 1.0)
+  double p_default_60d = 3;              // Вероятность дефолта за 60 дней (0.0 - 1.0)
+  bool is_high_risk = 4;                 // Превышен ли порог (триггер для оптимизатора)
+  repeated FeatureImportance top_risk_drivers = 5; // SHAP-факторы объяснения (XAI)
+}
+
+message FeatureImportance {
+  string feature_name = 1;
+  double impact_weight = 2;
+  string human_readable_reason = 3; // "Резкое падение входящих зарплатных поступлений"
+}
+
+// Запрос оптимизатора реструктуризации
+message OptimizationRequest {
+  string client_token = 1;
+  double remaining_principal = 2;        // Остаток долга (KZT)
+  double interest_rate = 3;              // Годовая ставка (напр. 0.20)
+  int32 remaining_term_months = 4;       // Оставшийся срок в месяцах
+  double current_monthly_payment = 5;    // Текущий платеж
+  double estimated_client_capacity = 6;  // Оценочная текущая платежеспособность
+}
+
+enum RestructuringType {
+  RESTRUCTURING_TYPE_UNSPECIFIED = 0;
+  PAYMENT_HOLIDAY = 1;                   // Кредитные каникулы (отсрочка)
+  TERM_EXTENSION = 2;                    // Пролонгация срока
+  GRACE_PERIOD = 3;                      // Грейс-период (только проценты)
+}
+
+enum RiskLevel {
+  RISK_LEVEL_UNSPECIFIED = 0;
+  LOW = 1;
+  MODERATE = 2;
+  HIGH_EARLY_WARNING = 3;
+  CRITICAL = 4;
+}
+
+message RestructuringScenario {
+  RestructuringType scenario_type = 1;
+  string title = 2;
+  string description = 3;
+  int32 new_term_months = 4;
+  double new_monthly_payment = 5;
+  int32 grace_period_months = 6;
+  double npv_recovery_rate = 7;          // Ожидаемый % возврата NPV
+  bool complies_with_arrfr = 8;          // Соответствие лимитам АРРФР 
+  double default_probability_under_plan = 9; // Пересчитанный риск при сниженной нагрузке
+}
+
+message OptimizationResponse {
+  string client_token = 1;
+  repeated RestructuringScenario scenarios = 2;
+}

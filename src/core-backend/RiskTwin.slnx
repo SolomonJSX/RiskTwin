@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="RiskTwin.Application/RiskTwin.Application.csproj" />
+  <Project Path="RiskTwin.Domain/RiskTwin.Domain.csproj" />
+  <Project Path="RiskTwin.Infrastructure/RiskTwin.Infrastructure.csproj" />
+  <Project Path="RiskTwin.Tests/RiskTwin.Tests.csproj" />
+  <Project Path="RiskTwin.WebApi/RiskTwin.WebApi.csproj" />
+</Solution>
