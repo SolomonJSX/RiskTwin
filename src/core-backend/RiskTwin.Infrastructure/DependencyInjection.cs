@@ -26,6 +26,23 @@ public static class DependencyInjection
         services.AddScoped<IStalkerRepository, StalkerRepository>();
 
         services.AddScoped<IAuditService, Sha256AuditService>();
+
+        // Настройка Redis Feature Store
+        var redisConnString = configuration.GetConnectionString("Redis") ?? "localhost:6379";
+        services.AddSingleton<StackExchange.Redis.IConnectionMultiplexer>(_ => 
+        {
+            try
+            {
+                var options = StackExchange.Redis.ConfigurationOptions.Parse(redisConnString);
+                options.AbortOnConnectFail = false;
+                options.ConnectTimeout = 2000;
+                return StackExchange.Redis.ConnectionMultiplexer.Connect(options);
+            }
+            catch
+            {
+                return null!;
+            }
+        });
         services.AddScoped<IFeatureStore, RedisFeatureStore>();
 
         var grpcUrl = configuration["GrpcSettings:MlInferenceUrl"] ?? "http://localhost:50051";

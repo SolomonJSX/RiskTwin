@@ -33,7 +33,13 @@ public class RiskOfficerController : ControllerBase
             l.MonthlyPayment,
             l.DaysPastDue,
             l.StageIfrs9,
-            LastScoring = l.ScoringEvents.FirstOrDefault()
+            LastScoring = l.ScoringEvents.Select(s => new
+            {
+                s.EventId,
+                s.PDefault30d,
+                s.PDefault60d,
+                s.TriggeredAt
+            }).FirstOrDefault()
         }));
     }
 

@@ -11,7 +11,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+    });
 builder.Services.AddHostedService<EarlyWarningBackgroundWorker>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -37,38 +41,67 @@ using (var scope = app.Services.CreateScope())
     var db = scope.ServiceProvider.GetRequiredService<RiskTwinDbContext>();
     await db.Database.EnsureCreatedAsync();
 
-    // Сидируем тестового клиента, если база пустая
-    if (!await db.Accounts.AnyAsync())
+    // Наполняем портфель активных заемщиков для красивой и разнообразной демонстрации
+    if (await db.Loans.CountAsync() <= 1)
     {
-        var testClientToken = Guid.Parse("11111111-2222-3333-4444-555555555555");
-        var testLoanId = Guid.Parse("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee");
-
-        var account = new Account
+        var sampleLoans = new List<(string Name, decimal Principal, decimal Monthly, int Dpd, string Stage, decimal Kdn, float Pd)>
         {
-            ClientToken = testClientToken,
-            Segment = "MASS",
-            CurrentKdn = 0.58m,
-            IsRestructuringActive = false
+            ("KZ886010002003004001", 3_200_000m, 92_000m, 5, "STAGE_2", 0.62m, 0.78f),
+            ("KZ886010002003004002", 1_450_000m, 48_500m, 0, "STAGE_1", 0.38m, 0.12f),
+            ("KZ886010002003004003", 5_800_000m, 165_000m, 12, "STAGE_2", 0.71m, 0.85f),
+            ("KZ886010002003004004", 890_000m, 31_200m, 0, "STAGE_1", 0.29m, 0.08f),
+            ("KZ886010002003004005", 2_100_000m, 74_000m, 2, "STAGE_1", 0.54m, 0.45f),
+            ("KZ886010002003004006", 4_300_000m, 128_000m, 18, "STAGE_2", 0.68m, 0.82f),
+            ("KZ886010002003004007", 1_750_000m, 56_000m, 0, "STAGE_1", 0.35m, 0.14f),
+            ("KZ886010002003004008", 6_500_000m, 190_000m, 7, "STAGE_2", 0.75m, 0.91f),
+            ("KZ886010002003004009", 950_000m, 34_000m, 0, "STAGE_1", 0.31m, 0.11f),
+            ("KZ886010002003004010", 3_800_000m, 115_000m, 4, "STAGE_1", 0.59m, 0.52f),
         };
 
-        var loan = new Loan
+        foreach (var (accNum, principal, monthly, dpd, stage, kdn, pd) in sampleLoans)
         {
-            LoanId = testLoanId,
-            ClientToken = testClientToken,
-            AccountNumber = "KZ886010002003004005",
-            OriginalPrincipal = 2_500_000m,
-            CurrentPrincipalBalance = 1_850_000m,
-            InterestRate = 0.22m,
-            EffectiveRateGesv = 0.245m,
-            MonthlyPayment = 78_500m,
-            MaturityDate = DateOnly.FromDateTime(DateTime.UtcNow.AddMonths(36)),
-            DaysPastDue = 3,
-            StageIfrs9 = "STAGE_1",
-            Status = "ACTIVE"
-        };
+            var cToken = Guid.NewGuid();
+            var lId = Guid.NewGuid();
 
-        db.Accounts.Add(account);
-        db.Loans.Add(loan);
+            var acc = new Account
+            {
+                ClientToken = cToken,
+                Segment = "MASS",
+                CurrentKdn = kdn,
+                IsRestructuringActive = false
+            };
+
+            var ln = new Loan
+            {
+                LoanId = lId,
+                ClientToken = cToken,
+                AccountNumber = accNum,
+                OriginalPrincipal = principal * 1.2m,
+                CurrentPrincipalBalance = principal,
+                InterestRate = 0.21m,
+                EffectiveRateGesv = 0.235m,
+                MonthlyPayment = monthly,
+                MaturityDate = DateOnly.FromDateTime(DateTime.UtcNow.AddMonths(24)),
+                DaysPastDue = dpd,
+                StageIfrs9 = stage,
+                Status = "ACTIVE"
+            };
+
+            var sc = new ScoringEvent
+            {
+                EventId = Guid.NewGuid(),
+                LoanId = lId,
+                PDefault30d = pd,
+                PDefault60d = Math.Min(pd * 1.15f, 0.99f),
+                ModelVersion = "LightGBM_v2",
+                TriggeredAt = DateTime.UtcNow.AddMinutes(-new Random().Next(10, 240))
+            };
+
+            db.Accounts.Add(acc);
+            db.Loans.Add(ln);
+            db.ScoringEvents.Add(sc);
+        }
+
         await db.SaveChangesAsync();
     }
 

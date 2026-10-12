@@ -1,0 +1,11 @@
+[project]
+name = "risktwin-ingestion"
+version = "0.1.0"
+description = "Event-driven Transaction Ingestion Engine and Online Feature Store for RiskTwin"
+dependencies = [
+    "redis>=5.0.0",
+    "confluent-kafka>=2.3.0",
+    "pydantic>=2.5.0",
+    "rich>=13.7.0"
+]
+requires-python = ">=3.11"
