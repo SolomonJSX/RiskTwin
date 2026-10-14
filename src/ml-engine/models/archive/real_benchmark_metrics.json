@@ -1,0 +1,38 @@
+{
+  "dataset_name": "Kaggle Credit Risk Benchmark Dataset",
+  "total_records": 32576,
+  "train_records": 22815,
+  "test_records": 4887,
+  "features_count": 22,
+  "feature_names": [
+    "person_age",
+    "person_income",
+    "person_emp_length",
+    "loan_amnt",
+    "loan_int_rate",
+    "loan_percent_income",
+    "cb_person_default_on_file",
+    "cb_person_cred_hist_length",
+    "person_home_ownership_OTHER",
+    "person_home_ownership_OWN",
+    "person_home_ownership_RENT",
+    "loan_intent_EDUCATION",
+    "loan_intent_HOMEIMPROVEMENT",
+    "loan_intent_MEDICAL",
+    "loan_intent_PERSONAL",
+    "loan_intent_VENTURE",
+    "loan_grade_B",
+    "loan_grade_C",
+    "loan_grade_D",
+    "loan_grade_E",
+    "loan_grade_F",
+    "loan_grade_G"
+  ],
+  "metrics": {
+    "pytorch_roc_auc": 0.914,
+    "pytorch_pr_auc": 0.8459,
+    "pytorch_accuracy": 0.878,
+    "pytorch_f1": 0.7276,
+    "lightgbm_roc_auc": 0.9429
+  }
+}

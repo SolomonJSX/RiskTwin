@@ -1,0 +1,278 @@
+EVENT_ID,TIMESTAMP,EVENT_TYPE,AUTH_METHOD,IP_ADDRESS,GEO_LOCATION,SCREEN_VIEW,SESSION_DURATION_SEC,RISK_SIGNAL,DESCRIPTION
+EVT-5001,2025-01-03 08:32:30,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.163.31,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,35,NORMAL,Стандартная утренняя проверка балансов
+EVT-5002,2025-01-10 08:32:37,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.61.254,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,15,NORMAL,Стандартная утренняя проверка балансов
+EVT-5003,2025-01-12 08:32:19,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.174.36,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,32,NORMAL,Стандартная утренняя проверка балансов
+EVT-5004,2025-01-16 08:32:32,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.179.120,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,31,NORMAL,Стандартная утренняя проверка балансов
+EVT-5005,2025-01-18 08:32:10,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.166.123,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,39,NORMAL,Стандартная утренняя проверка балансов
+EVT-5006,2025-01-18 12:15:00,LOAN_SCHEDULE_INSPECT,Biometrics,178.89.44.112,"Almaty, Bostandyk District",CREDIT_SCHEDULE_PREVIEW,59,POSITIVE_DISCIPLINE,Просмотр деталей досрочного списания
+EVT-5007,2025-01-19 08:32:36,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.98.240,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,39,NORMAL,Стандартная утренняя проверка балансов
+EVT-5008,2025-01-19 12:15:00,LOAN_SCHEDULE_INSPECT,Biometrics,178.89.44.112,"Almaty, Bostandyk District",CREDIT_SCHEDULE_PREVIEW,48,POSITIVE_DISCIPLINE,Просмотр деталей досрочного списания
+EVT-5009,2025-01-22 08:32:21,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.74.162,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,20,NORMAL,Стандартная утренняя проверка балансов
+EVT-5010,2025-01-23 08:32:46,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.84.5,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,39,NORMAL,Стандартная утренняя проверка балансов
+EVT-5011,2025-01-25 08:32:47,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.165.83,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,19,NORMAL,Стандартная утренняя проверка балансов
+EVT-5012,2025-01-30 08:32:27,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.54.154,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,31,NORMAL,Стандартная утренняя проверка балансов
+EVT-5013,2025-02-01 08:32:59,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.114.215,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,24,NORMAL,Стандартная утренняя проверка балансов
+EVT-5014,2025-02-03 08:32:39,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.123.210,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,40,NORMAL,Стандартная утренняя проверка балансов
+EVT-5015,2025-02-06 08:32:28,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.34.209,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,26,NORMAL,Стандартная утренняя проверка балансов
+EVT-5016,2025-02-08 08:32:13,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.35.216,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,29,NORMAL,Стандартная утренняя проверка балансов
+EVT-5017,2025-02-09 08:32:52,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.142.111,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,25,NORMAL,Стандартная утренняя проверка балансов
+EVT-5018,2025-02-11 08:32:44,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.51.248,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,29,NORMAL,Стандартная утренняя проверка балансов
+EVT-5019,2025-02-13 08:32:49,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.68.52,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,38,NORMAL,Стандартная утренняя проверка балансов
+EVT-5020,2025-02-14 08:32:30,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.132.82,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,34,NORMAL,Стандартная утренняя проверка балансов
+EVT-5021,2025-02-18 12:15:00,LOAN_SCHEDULE_INSPECT,Biometrics,178.89.44.112,"Almaty, Bostandyk District",CREDIT_SCHEDULE_PREVIEW,58,POSITIVE_DISCIPLINE,Просмотр деталей досрочного списания
+EVT-5022,2025-02-19 08:32:30,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.87.234,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,32,NORMAL,Стандартная утренняя проверка балансов
+EVT-5023,2025-02-19 12:15:00,LOAN_SCHEDULE_INSPECT,Biometrics,178.89.44.112,"Almaty, Bostandyk District",CREDIT_SCHEDULE_PREVIEW,25,POSITIVE_DISCIPLINE,Просмотр деталей досрочного списания
+EVT-5024,2025-02-20 08:32:26,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.109.205,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,15,NORMAL,Стандартная утренняя проверка балансов
+EVT-5025,2025-02-21 08:32:14,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.42.205,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,24,NORMAL,Стандартная утренняя проверка балансов
+EVT-5026,2025-02-23 08:32:57,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.67.252,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,21,NORMAL,Стандартная утренняя проверка балансов
+EVT-5027,2025-02-25 08:32:28,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.127.77,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,25,NORMAL,Стандартная утренняя проверка балансов
+EVT-5028,2025-03-08 08:32:20,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.156.235,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,25,NORMAL,Стандартная утренняя проверка балансов
+EVT-5029,2025-03-10 08:32:39,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.34.150,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,28,NORMAL,Стандартная утренняя проверка балансов
+EVT-5030,2025-03-18 08:32:58,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.32.145,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,36,NORMAL,Стандартная утренняя проверка балансов
+EVT-5031,2025-03-18 12:15:00,LOAN_SCHEDULE_INSPECT,Biometrics,178.89.44.112,"Almaty, Bostandyk District",CREDIT_SCHEDULE_PREVIEW,59,POSITIVE_DISCIPLINE,Просмотр деталей досрочного списания
+EVT-5032,2025-03-19 12:15:00,LOAN_SCHEDULE_INSPECT,Biometrics,178.89.44.112,"Almaty, Bostandyk District",CREDIT_SCHEDULE_PREVIEW,33,POSITIVE_DISCIPLINE,Просмотр деталей досрочного списания
+EVT-5033,2025-03-21 08:32:50,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.18.160,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,37,NORMAL,Стандартная утренняя проверка балансов
+EVT-5034,2025-03-26 08:32:50,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.45.210,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,31,NORMAL,Стандартная утренняя проверка балансов
+EVT-5035,2025-03-27 08:32:44,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.75.61,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,31,NORMAL,Стандартная утренняя проверка балансов
+EVT-5036,2025-03-30 08:32:11,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.158.190,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,15,NORMAL,Стандартная утренняя проверка балансов
+EVT-5037,2025-03-31 08:32:36,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.155.7,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,20,NORMAL,Стандартная утренняя проверка балансов
+EVT-5038,2025-04-02 08:32:36,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.153.37,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,42,NORMAL,Стандартная утренняя проверка балансов
+EVT-5039,2025-04-03 08:32:10,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.104.172,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,38,NORMAL,Стандартная утренняя проверка балансов
+EVT-5040,2025-04-04 08:32:21,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.145.115,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,28,NORMAL,Стандартная утренняя проверка балансов
+EVT-5041,2025-04-05 08:32:41,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.161.56,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,17,NORMAL,Стандартная утренняя проверка балансов
+EVT-5042,2025-04-09 08:32:21,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.113.250,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,41,NORMAL,Стандартная утренняя проверка балансов
+EVT-5043,2025-04-10 08:32:48,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.171.6,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,38,NORMAL,Стандартная утренняя проверка балансов
+EVT-5044,2025-04-11 08:32:28,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.58.192,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,44,NORMAL,Стандартная утренняя проверка балансов
+EVT-5045,2025-04-14 03:40:12,NIGHT_APP_CHECK,Biometrics,178.89.44.112,"Almaty, Medeu District",DASHBOARD_PREDELINQUENCY_RADAR,85,EARLY_WARNING_LATENT,Ночная проверка приложения во время ночного деплоя бэкенда
+EVT-5046,2025-04-16 08:32:34,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.32.220,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,26,NORMAL,Стандартная утренняя проверка балансов
+EVT-5047,2025-04-18 12:15:00,LOAN_SCHEDULE_INSPECT,Biometrics,178.89.44.112,"Almaty, Bostandyk District",CREDIT_SCHEDULE_PREVIEW,25,POSITIVE_DISCIPLINE,Просмотр деталей досрочного списания
+EVT-5048,2025-04-19 08:32:44,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.188.84,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,32,NORMAL,Стандартная утренняя проверка балансов
+EVT-5049,2025-04-19 12:15:00,LOAN_SCHEDULE_INSPECT,Biometrics,178.89.44.112,"Almaty, Bostandyk District",CREDIT_SCHEDULE_PREVIEW,36,POSITIVE_DISCIPLINE,Просмотр деталей досрочного списания
+EVT-5050,2025-04-22 08:32:57,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.50.231,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,25,NORMAL,Стандартная утренняя проверка балансов
+EVT-5051,2025-04-23 08:32:59,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.113.245,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,26,NORMAL,Стандартная утренняя проверка балансов
+EVT-5052,2025-04-25 08:32:42,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.173.144,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,35,NORMAL,Стандартная утренняя проверка балансов
+EVT-5053,2025-04-27 08:32:16,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.116.213,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,15,NORMAL,Стандартная утренняя проверка балансов
+EVT-5054,2025-04-30 08:32:52,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.29.146,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,26,NORMAL,Стандартная утренняя проверка балансов
+EVT-5055,2025-05-05 08:32:22,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.111.60,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,26,NORMAL,Стандартная утренняя проверка балансов
+EVT-5056,2025-05-07 08:32:37,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.67.7,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,34,NORMAL,Стандартная утренняя проверка балансов
+EVT-5057,2025-05-08 08:32:53,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.182.252,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,36,NORMAL,Стандартная утренняя проверка балансов
+EVT-5058,2025-05-09 08:32:43,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.142.51,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,34,NORMAL,Стандартная утренняя проверка балансов
+EVT-5059,2025-05-11 08:32:52,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.168.243,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,32,NORMAL,Стандартная утренняя проверка балансов
+EVT-5060,2025-05-12 08:32:17,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.94.197,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,31,NORMAL,Стандартная утренняя проверка балансов
+EVT-5061,2025-05-14 08:32:30,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.53.49,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,37,NORMAL,Стандартная утренняя проверка балансов
+EVT-5062,2025-05-16 08:32:42,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.150.61,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,39,NORMAL,Стандартная утренняя проверка балансов
+EVT-5063,2025-05-18 12:15:00,LOAN_SCHEDULE_INSPECT,Biometrics,178.89.44.112,"Almaty, Bostandyk District",CREDIT_SCHEDULE_PREVIEW,25,POSITIVE_DISCIPLINE,Просмотр деталей досрочного списания
+EVT-5064,2025-05-19 08:32:42,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.147.230,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,45,NORMAL,Стандартная утренняя проверка балансов
+EVT-5065,2025-05-19 12:15:00,LOAN_SCHEDULE_INSPECT,Biometrics,178.89.44.112,"Almaty, Bostandyk District",CREDIT_SCHEDULE_PREVIEW,21,POSITIVE_DISCIPLINE,Просмотр деталей досрочного списания
+EVT-5066,2025-05-22 08:32:49,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.144.10,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,28,NORMAL,Стандартная утренняя проверка балансов
+EVT-5067,2025-05-26 08:32:24,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.30.207,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,38,NORMAL,Стандартная утренняя проверка балансов
+EVT-5068,2025-05-29 08:32:39,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.126.248,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,24,NORMAL,Стандартная утренняя проверка балансов
+EVT-5069,2025-05-31 08:32:37,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.74.6,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,42,NORMAL,Стандартная утренняя проверка балансов
+EVT-5070,2025-06-03 08:32:29,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.56.202,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,15,NORMAL,Стандартная утренняя проверка балансов
+EVT-5071,2025-06-04 08:32:16,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.152.225,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,36,NORMAL,Стандартная утренняя проверка балансов
+EVT-5072,2025-06-07 08:32:20,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.103.141,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,28,NORMAL,Стандартная утренняя проверка балансов
+EVT-5073,2025-06-09 08:32:30,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.78.204,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,22,NORMAL,Стандартная утренняя проверка балансов
+EVT-5074,2025-06-17 08:32:22,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.136.230,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,35,NORMAL,Стандартная утренняя проверка балансов
+EVT-5075,2025-06-18 12:15:00,LOAN_SCHEDULE_INSPECT,Biometrics,178.89.44.112,"Almaty, Bostandyk District",CREDIT_SCHEDULE_PREVIEW,25,POSITIVE_DISCIPLINE,Просмотр деталей досрочного списания
+EVT-5076,2025-06-19 08:32:29,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.161.175,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,22,NORMAL,Стандартная утренняя проверка балансов
+EVT-5077,2025-06-19 12:15:00,LOAN_SCHEDULE_INSPECT,Biometrics,178.89.44.112,"Almaty, Bostandyk District",CREDIT_SCHEDULE_PREVIEW,29,POSITIVE_DISCIPLINE,Просмотр деталей досрочного списания
+EVT-5078,2025-06-21 08:32:54,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.125.76,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,26,NORMAL,Стандартная утренняя проверка балансов
+EVT-5079,2025-06-24 08:32:59,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.92.22,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,37,NORMAL,Стандартная утренняя проверка балансов
+EVT-5080,2025-06-29 08:32:33,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.63.185,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,30,NORMAL,Стандартная утренняя проверка балансов
+EVT-5081,2025-07-02 08:32:56,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.44.85,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,33,NORMAL,Стандартная утренняя проверка балансов
+EVT-5082,2025-07-03 08:32:30,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.103.9,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,15,NORMAL,Стандартная утренняя проверка балансов
+EVT-5083,2025-07-18 12:15:00,LOAN_SCHEDULE_INSPECT,Biometrics,178.89.44.112,"Almaty, Bostandyk District",CREDIT_SCHEDULE_PREVIEW,22,POSITIVE_DISCIPLINE,Просмотр деталей досрочного списания
+EVT-5084,2025-07-19 12:15:00,LOAN_SCHEDULE_INSPECT,Biometrics,178.89.44.112,"Almaty, Bostandyk District",CREDIT_SCHEDULE_PREVIEW,28,POSITIVE_DISCIPLINE,Просмотр деталей досрочного списания
+EVT-5085,2025-07-22 08:32:22,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.156.137,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,24,NORMAL,Стандартная утренняя проверка балансов
+EVT-5086,2025-07-25 08:32:51,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.59.163,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,27,NORMAL,Стандартная утренняя проверка балансов
+EVT-5087,2025-07-27 08:32:35,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.157.48,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,24,NORMAL,Стандартная утренняя проверка балансов
+EVT-5088,2025-07-30 08:32:45,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.39.29,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,40,NORMAL,Стандартная утренняя проверка балансов
+EVT-5089,2025-07-31 08:32:43,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.36.196,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,24,NORMAL,Стандартная утренняя проверка балансов
+EVT-5090,2025-08-04 08:32:14,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.59.26,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,33,NORMAL,Стандартная утренняя проверка балансов
+EVT-5091,2025-08-06 08:32:32,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.74.147,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,41,NORMAL,Стандартная утренняя проверка балансов
+EVT-5092,2025-08-12 08:32:21,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.32.229,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,40,NORMAL,Стандартная утренняя проверка балансов
+EVT-5093,2025-08-14 08:32:59,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.192.108,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,45,NORMAL,Стандартная утренняя проверка балансов
+EVT-5094,2025-08-14 03:40:12,NIGHT_APP_CHECK,Biometrics,178.89.44.112,"Almaty, Medeu District",DASHBOARD_PREDELINQUENCY_RADAR,85,EARLY_WARNING_LATENT,Ночная проверка приложения во время ночного деплоя бэкенда
+EVT-5095,2025-08-16 08:32:51,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.165.25,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,20,NORMAL,Стандартная утренняя проверка балансов
+EVT-5096,2025-08-17 08:32:21,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.75.222,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,15,NORMAL,Стандартная утренняя проверка балансов
+EVT-5097,2025-08-18 12:15:00,LOAN_SCHEDULE_INSPECT,Biometrics,178.89.44.112,"Almaty, Bostandyk District",CREDIT_SCHEDULE_PREVIEW,54,POSITIVE_DISCIPLINE,Просмотр деталей досрочного списания
+EVT-5098,2025-08-19 12:15:00,LOAN_SCHEDULE_INSPECT,Biometrics,178.89.44.112,"Almaty, Bostandyk District",CREDIT_SCHEDULE_PREVIEW,47,POSITIVE_DISCIPLINE,Просмотр деталей досрочного списания
+EVT-5099,2025-08-23 08:32:49,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.170.36,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,29,NORMAL,Стандартная утренняя проверка балансов
+EVT-5100,2025-08-27 08:32:17,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.146.6,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,30,NORMAL,Стандартная утренняя проверка балансов
+EVT-5101,2025-08-28 08:32:30,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.58.212,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,31,NORMAL,Стандартная утренняя проверка балансов
+EVT-5102,2025-08-29 08:32:48,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.185.12,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,25,NORMAL,Стандартная утренняя проверка балансов
+EVT-5103,2025-08-31 08:32:16,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.47.181,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,34,NORMAL,Стандартная утренняя проверка балансов
+EVT-5104,2025-09-01 08:32:34,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.74.196,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,27,NORMAL,Стандартная утренняя проверка балансов
+EVT-5105,2025-09-04 08:32:43,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.187.160,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,40,NORMAL,Стандартная утренняя проверка балансов
+EVT-5106,2025-09-05 08:32:41,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.104.251,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,38,NORMAL,Стандартная утренняя проверка балансов
+EVT-5107,2025-09-07 08:32:22,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.178.234,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,34,NORMAL,Стандартная утренняя проверка балансов
+EVT-5108,2025-09-09 08:32:34,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.146.77,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,28,NORMAL,Стандартная утренняя проверка балансов
+EVT-5109,2025-09-10 08:32:24,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.193.106,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,19,NORMAL,Стандартная утренняя проверка балансов
+EVT-5110,2025-09-11 08:32:20,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.64.49,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,30,NORMAL,Стандартная утренняя проверка балансов
+EVT-5111,2025-09-17 08:32:13,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.83.245,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,31,NORMAL,Стандартная утренняя проверка балансов
+EVT-5112,2025-09-18 08:32:30,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.83.144,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,22,NORMAL,Стандартная утренняя проверка балансов
+EVT-5113,2025-09-18 12:15:00,LOAN_SCHEDULE_INSPECT,Biometrics,178.89.44.112,"Almaty, Bostandyk District",CREDIT_SCHEDULE_PREVIEW,48,POSITIVE_DISCIPLINE,Просмотр деталей досрочного списания
+EVT-5114,2025-09-19 08:32:24,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.48.241,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,26,NORMAL,Стандартная утренняя проверка балансов
+EVT-5115,2025-09-19 12:15:00,LOAN_SCHEDULE_INSPECT,Biometrics,178.89.44.112,"Almaty, Bostandyk District",CREDIT_SCHEDULE_PREVIEW,28,POSITIVE_DISCIPLINE,Просмотр деталей досрочного списания
+EVT-5116,2025-09-22 08:32:33,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.136.67,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,24,NORMAL,Стандартная утренняя проверка балансов
+EVT-5117,2025-09-28 08:32:43,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.155.145,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,23,NORMAL,Стандартная утренняя проверка балансов
+EVT-5118,2025-10-03 08:32:46,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.58.138,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,21,NORMAL,Стандартная утренняя проверка балансов
+EVT-5119,2025-10-04 08:32:16,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.152.213,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,15,NORMAL,Стандартная утренняя проверка балансов
+EVT-5120,2025-10-09 08:32:22,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.89.110,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,34,NORMAL,Стандартная утренняя проверка балансов
+EVT-5121,2025-10-11 08:32:22,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.20.27,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,29,NORMAL,Стандартная утренняя проверка балансов
+EVT-5122,2025-10-14 08:32:30,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.22.78,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,16,NORMAL,Стандартная утренняя проверка балансов
+EVT-5123,2025-10-14 03:40:12,NIGHT_APP_CHECK,Biometrics,178.89.44.112,"Almaty, Medeu District",DASHBOARD_PREDELINQUENCY_RADAR,85,EARLY_WARNING_LATENT,Ночная проверка приложения во время ночного деплоя бэкенда
+EVT-5124,2025-10-15 08:32:47,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.175.30,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,42,NORMAL,Стандартная утренняя проверка балансов
+EVT-5125,2025-10-16 08:32:45,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.36.104,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,42,NORMAL,Стандартная утренняя проверка балансов
+EVT-5126,2025-10-17 08:32:27,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.94.134,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,42,NORMAL,Стандартная утренняя проверка балансов
+EVT-5127,2025-10-18 08:32:35,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.26.199,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,21,NORMAL,Стандартная утренняя проверка балансов
+EVT-5128,2025-10-18 12:15:00,LOAN_SCHEDULE_INSPECT,Biometrics,178.89.44.112,"Almaty, Bostandyk District",CREDIT_SCHEDULE_PREVIEW,60,POSITIVE_DISCIPLINE,Просмотр деталей досрочного списания
+EVT-5129,2025-10-19 08:32:29,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.129.7,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,36,NORMAL,Стандартная утренняя проверка балансов
+EVT-5130,2025-10-19 12:15:00,LOAN_SCHEDULE_INSPECT,Biometrics,178.89.44.112,"Almaty, Bostandyk District",CREDIT_SCHEDULE_PREVIEW,52,POSITIVE_DISCIPLINE,Просмотр деталей досрочного списания
+EVT-5131,2025-10-21 08:32:18,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.145.141,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,45,NORMAL,Стандартная утренняя проверка балансов
+EVT-5132,2025-10-26 08:32:20,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.44.113,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,41,NORMAL,Стандартная утренняя проверка балансов
+EVT-5133,2025-10-27 08:32:23,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.161.254,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,34,NORMAL,Стандартная утренняя проверка балансов
+EVT-5134,2025-10-29 08:32:34,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.130.128,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,34,NORMAL,Стандартная утренняя проверка балансов
+EVT-5135,2025-10-31 08:32:40,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.62.244,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,41,NORMAL,Стандартная утренняя проверка балансов
+EVT-5136,2025-11-01 08:32:54,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.33.173,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,35,NORMAL,Стандартная утренняя проверка балансов
+EVT-5137,2025-11-07 08:32:44,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.109.124,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,41,NORMAL,Стандартная утренняя проверка балансов
+EVT-5138,2025-11-11 08:32:52,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.16.26,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,29,NORMAL,Стандартная утренняя проверка балансов
+EVT-5139,2025-11-12 08:32:24,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.146.187,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,32,NORMAL,Стандартная утренняя проверка балансов
+EVT-5140,2025-11-14 08:32:47,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.69.142,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,37,NORMAL,Стандартная утренняя проверка балансов
+EVT-5141,2025-11-15 08:32:11,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.28.42,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,21,NORMAL,Стандартная утренняя проверка балансов
+EVT-5142,2025-11-18 12:15:00,LOAN_SCHEDULE_INSPECT,Biometrics,178.89.44.112,"Almaty, Bostandyk District",CREDIT_SCHEDULE_PREVIEW,44,POSITIVE_DISCIPLINE,Просмотр деталей досрочного списания
+EVT-5143,2025-11-19 12:15:00,LOAN_SCHEDULE_INSPECT,Biometrics,178.89.44.112,"Almaty, Bostandyk District",CREDIT_SCHEDULE_PREVIEW,42,POSITIVE_DISCIPLINE,Просмотр деталей досрочного списания
+EVT-5144,2025-11-25 08:32:36,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.114.49,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,17,NORMAL,Стандартная утренняя проверка балансов
+EVT-5145,2025-11-30 08:32:45,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.109.116,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,24,NORMAL,Стандартная утренняя проверка балансов
+EVT-5146,2025-12-02 08:32:10,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.25.252,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,28,NORMAL,Стандартная утренняя проверка балансов
+EVT-5147,2025-12-04 08:32:24,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.86.81,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,20,NORMAL,Стандартная утренняя проверка балансов
+EVT-5148,2025-12-07 08:32:32,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.30.8,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,20,NORMAL,Стандартная утренняя проверка балансов
+EVT-5149,2025-12-08 08:32:44,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.147.206,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,22,NORMAL,Стандартная утренняя проверка балансов
+EVT-5150,2025-12-16 08:32:41,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.85.88,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,43,NORMAL,Стандартная утренняя проверка балансов
+EVT-5151,2025-12-18 12:15:00,LOAN_SCHEDULE_INSPECT,Biometrics,178.89.44.112,"Almaty, Bostandyk District",CREDIT_SCHEDULE_PREVIEW,57,POSITIVE_DISCIPLINE,Просмотр деталей досрочного списания
+EVT-5152,2025-12-19 12:15:00,LOAN_SCHEDULE_INSPECT,Biometrics,178.89.44.112,"Almaty, Bostandyk District",CREDIT_SCHEDULE_PREVIEW,34,POSITIVE_DISCIPLINE,Просмотр деталей досрочного списания
+EVT-5153,2025-12-24 08:32:25,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.199.33,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,42,NORMAL,Стандартная утренняя проверка балансов
+EVT-5154,2025-12-25 08:32:13,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.132.225,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,36,NORMAL,Стандартная утренняя проверка балансов
+EVT-5155,2025-12-27 08:32:29,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.156.3,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,26,NORMAL,Стандартная утренняя проверка балансов
+EVT-5156,2025-12-28 08:32:14,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.194.215,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,23,NORMAL,Стандартная утренняя проверка балансов
+EVT-5157,2025-12-29 08:32:19,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.41.155,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,18,NORMAL,Стандартная утренняя проверка балансов
+EVT-5158,2025-12-30 08:32:14,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.130.52,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,45,NORMAL,Стандартная утренняя проверка балансов
+EVT-5159,2025-12-31 08:32:40,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.67.199,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,25,NORMAL,Стандартная утренняя проверка балансов
+EVT-5160,2026-01-01 08:32:59,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.50.249,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,30,NORMAL,Стандартная утренняя проверка балансов
+EVT-5161,2026-01-06 08:32:12,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.10.253,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,20,NORMAL,Стандартная утренняя проверка балансов
+EVT-5162,2026-01-12 08:32:35,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.160.26,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,25,NORMAL,Стандартная утренняя проверка балансов
+EVT-5163,2026-01-14 08:32:17,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.183.184,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,31,NORMAL,Стандартная утренняя проверка балансов
+EVT-5164,2026-01-16 08:32:52,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.32.123,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,34,NORMAL,Стандартная утренняя проверка балансов
+EVT-5165,2026-01-17 08:32:56,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.121.107,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,31,NORMAL,Стандартная утренняя проверка балансов
+EVT-5166,2026-01-18 12:15:00,LOAN_SCHEDULE_INSPECT,Biometrics,178.89.44.112,"Almaty, Bostandyk District",CREDIT_SCHEDULE_PREVIEW,25,POSITIVE_DISCIPLINE,Просмотр деталей досрочного списания
+EVT-5167,2026-01-19 12:15:00,LOAN_SCHEDULE_INSPECT,Biometrics,178.89.44.112,"Almaty, Bostandyk District",CREDIT_SCHEDULE_PREVIEW,58,POSITIVE_DISCIPLINE,Просмотр деталей досрочного списания
+EVT-5168,2026-01-20 08:32:47,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.106.75,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,32,NORMAL,Стандартная утренняя проверка балансов
+EVT-5169,2026-01-21 08:32:39,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.93.33,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,23,NORMAL,Стандартная утренняя проверка балансов
+EVT-5170,2026-01-22 08:32:48,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.66.54,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,15,NORMAL,Стандартная утренняя проверка балансов
+EVT-5171,2026-01-26 08:32:57,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.130.158,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,38,NORMAL,Стандартная утренняя проверка балансов
+EVT-5172,2026-01-30 08:32:41,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.115.50,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,27,NORMAL,Стандартная утренняя проверка балансов
+EVT-5173,2026-02-01 08:32:20,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.119.225,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,24,NORMAL,Стандартная утренняя проверка балансов
+EVT-5174,2026-02-06 08:32:47,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.152.199,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,35,NORMAL,Стандартная утренняя проверка балансов
+EVT-5175,2026-02-08 08:32:31,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.71.203,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,16,NORMAL,Стандартная утренняя проверка балансов
+EVT-5176,2026-02-10 08:32:39,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.52.122,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,42,NORMAL,Стандартная утренняя проверка балансов
+EVT-5177,2026-02-13 08:32:17,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.177.124,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,33,NORMAL,Стандартная утренняя проверка балансов
+EVT-5178,2026-02-17 08:32:23,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.182.183,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,35,NORMAL,Стандартная утренняя проверка балансов
+EVT-5179,2026-02-18 12:15:00,LOAN_SCHEDULE_INSPECT,Biometrics,178.89.44.112,"Almaty, Bostandyk District",CREDIT_SCHEDULE_PREVIEW,52,POSITIVE_DISCIPLINE,Просмотр деталей досрочного списания
+EVT-5180,2026-02-19 12:15:00,LOAN_SCHEDULE_INSPECT,Biometrics,178.89.44.112,"Almaty, Bostandyk District",CREDIT_SCHEDULE_PREVIEW,52,POSITIVE_DISCIPLINE,Просмотр деталей досрочного списания
+EVT-5181,2026-02-22 08:32:14,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.161.134,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,36,NORMAL,Стандартная утренняя проверка балансов
+EVT-5182,2026-02-23 08:32:50,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.180.62,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,20,NORMAL,Стандартная утренняя проверка балансов
+EVT-5183,2026-02-28 08:32:33,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.54.245,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,38,NORMAL,Стандартная утренняя проверка балансов
+EVT-5184,2026-03-04 08:32:22,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.92.197,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,44,NORMAL,Стандартная утренняя проверка балансов
+EVT-5185,2026-03-05 08:32:14,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.198.2,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,24,NORMAL,Стандартная утренняя проверка балансов
+EVT-5186,2026-03-08 08:32:13,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.17.219,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,25,NORMAL,Стандартная утренняя проверка балансов
+EVT-5187,2026-03-09 08:32:46,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.145.171,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,42,NORMAL,Стандартная утренняя проверка балансов
+EVT-5188,2026-03-18 08:32:50,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.95.223,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,15,NORMAL,Стандартная утренняя проверка балансов
+EVT-5189,2026-03-18 12:15:00,LOAN_SCHEDULE_INSPECT,Biometrics,178.89.44.112,"Almaty, Bostandyk District",CREDIT_SCHEDULE_PREVIEW,53,POSITIVE_DISCIPLINE,Просмотр деталей досрочного списания
+EVT-5190,2026-03-19 12:15:00,LOAN_SCHEDULE_INSPECT,Biometrics,178.89.44.112,"Almaty, Bostandyk District",CREDIT_SCHEDULE_PREVIEW,24,POSITIVE_DISCIPLINE,Просмотр деталей досрочного списания
+EVT-5191,2026-03-21 08:32:12,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.49.240,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,20,NORMAL,Стандартная утренняя проверка балансов
+EVT-5192,2026-03-22 08:32:58,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.174.252,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,22,NORMAL,Стандартная утренняя проверка балансов
+EVT-5193,2026-03-29 08:32:40,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.129.191,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,35,NORMAL,Стандартная утренняя проверка балансов
+EVT-5194,2026-03-30 08:32:46,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.118.17,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,16,NORMAL,Стандартная утренняя проверка балансов
+EVT-5195,2026-04-01 08:32:16,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.105.59,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,21,NORMAL,Стандартная утренняя проверка балансов
+EVT-5196,2026-04-02 08:32:17,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.95.12,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,28,NORMAL,Стандартная утренняя проверка балансов
+EVT-5197,2026-04-07 08:32:31,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.18.155,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,22,NORMAL,Стандартная утренняя проверка балансов
+EVT-5198,2026-04-14 08:32:44,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.21.205,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,29,NORMAL,Стандартная утренняя проверка балансов
+EVT-5199,2026-04-14 03:40:12,NIGHT_APP_CHECK,Biometrics,178.89.44.112,"Almaty, Medeu District",DASHBOARD_PREDELINQUENCY_RADAR,85,EARLY_WARNING_LATENT,Ночная проверка приложения во время ночного деплоя бэкенда
+EVT-5200,2026-04-17 08:32:23,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.43.226,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,30,NORMAL,Стандартная утренняя проверка балансов
+EVT-5201,2026-04-18 08:32:31,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.74.222,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,27,NORMAL,Стандартная утренняя проверка балансов
+EVT-5202,2026-04-18 12:15:00,LOAN_SCHEDULE_INSPECT,Biometrics,178.89.44.112,"Almaty, Bostandyk District",CREDIT_SCHEDULE_PREVIEW,40,POSITIVE_DISCIPLINE,Просмотр деталей досрочного списания
+EVT-5203,2026-04-19 08:32:57,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.60.169,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,26,NORMAL,Стандартная утренняя проверка балансов
+EVT-5204,2026-04-19 12:15:00,LOAN_SCHEDULE_INSPECT,Biometrics,178.89.44.112,"Almaty, Bostandyk District",CREDIT_SCHEDULE_PREVIEW,42,POSITIVE_DISCIPLINE,Просмотр деталей досрочного списания
+EVT-5205,2026-05-01 08:32:52,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.48.69,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,41,NORMAL,Стандартная утренняя проверка балансов
+EVT-5206,2026-05-08 08:32:27,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.38.16,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,41,NORMAL,Стандартная утренняя проверка балансов
+EVT-5207,2026-05-13 08:32:13,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.13.74,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,34,NORMAL,Стандартная утренняя проверка балансов
+EVT-5208,2026-05-14 08:32:18,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.76.134,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,15,NORMAL,Стандартная утренняя проверка балансов
+EVT-5209,2026-05-16 08:32:35,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.191.111,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,25,NORMAL,Стандартная утренняя проверка балансов
+EVT-5210,2026-05-18 12:15:00,LOAN_SCHEDULE_INSPECT,Biometrics,178.89.44.112,"Almaty, Bostandyk District",CREDIT_SCHEDULE_PREVIEW,36,POSITIVE_DISCIPLINE,Просмотр деталей досрочного списания
+EVT-5211,2026-05-19 12:15:00,LOAN_SCHEDULE_INSPECT,Biometrics,178.89.44.112,"Almaty, Bostandyk District",CREDIT_SCHEDULE_PREVIEW,57,POSITIVE_DISCIPLINE,Просмотр деталей досрочного списания
+EVT-5212,2026-05-21 08:32:40,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.170.154,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,25,NORMAL,Стандартная утренняя проверка балансов
+EVT-5213,2026-05-22 08:32:15,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.196.140,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,19,NORMAL,Стандартная утренняя проверка балансов
+EVT-5214,2026-05-23 08:32:59,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.172.170,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,34,NORMAL,Стандартная утренняя проверка балансов
+EVT-5215,2026-05-26 08:32:57,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.110.32,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,28,NORMAL,Стандартная утренняя проверка балансов
+EVT-5216,2026-05-27 08:32:12,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.82.120,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,34,NORMAL,Стандартная утренняя проверка балансов
+EVT-5217,2026-05-28 08:32:41,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.110.81,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,15,NORMAL,Стандартная утренняя проверка балансов
+EVT-5218,2026-05-29 08:32:12,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.39.206,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,26,NORMAL,Стандартная утренняя проверка балансов
+EVT-5219,2026-05-30 08:32:33,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.116.25,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,35,NORMAL,Стандартная утренняя проверка балансов
+EVT-5220,2026-05-31 08:32:21,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.172.151,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,29,NORMAL,Стандартная утренняя проверка балансов
+EVT-5221,2026-06-02 08:32:30,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.92.17,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,30,NORMAL,Стандартная утренняя проверка балансов
+EVT-5222,2026-06-04 08:32:33,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.175.107,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,20,NORMAL,Стандартная утренняя проверка балансов
+EVT-5223,2026-06-06 08:32:51,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.186.163,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,15,NORMAL,Стандартная утренняя проверка балансов
+EVT-5224,2026-06-10 08:32:41,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.132.199,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,31,NORMAL,Стандартная утренняя проверка балансов
+EVT-5225,2026-06-11 08:32:49,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.143.17,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,35,NORMAL,Стандартная утренняя проверка балансов
+EVT-5226,2026-06-14 08:32:10,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.125.85,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,19,NORMAL,Стандартная утренняя проверка балансов
+EVT-5227,2026-06-15 08:32:20,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.184.171,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,38,NORMAL,Стандартная утренняя проверка балансов
+EVT-5228,2026-06-17 08:32:52,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.105.180,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,32,NORMAL,Стандартная утренняя проверка балансов
+EVT-5229,2026-06-18 08:32:25,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.53.167,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,41,NORMAL,Стандартная утренняя проверка балансов
+EVT-5230,2026-06-18 12:15:00,LOAN_SCHEDULE_INSPECT,Biometrics,178.89.44.112,"Almaty, Bostandyk District",CREDIT_SCHEDULE_PREVIEW,45,POSITIVE_DISCIPLINE,Просмотр деталей досрочного списания
+EVT-5231,2026-06-19 12:15:00,LOAN_SCHEDULE_INSPECT,Biometrics,178.89.44.112,"Almaty, Bostandyk District",CREDIT_SCHEDULE_PREVIEW,24,POSITIVE_DISCIPLINE,Просмотр деталей досрочного списания
+EVT-5232,2026-06-20 08:32:55,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.142.49,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,23,NORMAL,Стандартная утренняя проверка балансов
+EVT-5233,2026-06-21 08:32:39,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.111.121,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,40,NORMAL,Стандартная утренняя проверка балансов
+EVT-5234,2026-06-22 08:32:13,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.179.236,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,25,NORMAL,Стандартная утренняя проверка балансов
+EVT-5235,2026-06-23 08:32:28,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.52.208,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,40,NORMAL,Стандартная утренняя проверка балансов
+EVT-5236,2026-06-24 08:32:50,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.60.207,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,19,NORMAL,Стандартная утренняя проверка балансов
+EVT-5237,2026-06-26 08:32:22,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.58.89,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,35,NORMAL,Стандартная утренняя проверка балансов
+EVT-5238,2026-06-27 08:32:43,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.62.24,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,31,NORMAL,Стандартная утренняя проверка балансов
+EVT-5239,2026-06-30 08:32:34,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.108.218,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,28,NORMAL,Стандартная утренняя проверка балансов
+EVT-5240,2026-07-04 08:32:32,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.156.8,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,40,NORMAL,Стандартная утренняя проверка балансов
+EVT-5241,2026-07-08 08:32:52,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.161.214,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,18,NORMAL,Стандартная утренняя проверка балансов
+EVT-5242,2026-07-10 08:32:57,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.42.65,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,24,NORMAL,Стандартная утренняя проверка балансов
+EVT-5243,2026-07-12 08:32:53,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.159.198,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,36,NORMAL,Стандартная утренняя проверка балансов
+EVT-5244,2026-07-15 08:32:49,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.159.198,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,15,NORMAL,Стандартная утренняя проверка балансов
+EVT-5245,2026-07-16 08:32:43,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.150.123,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,33,NORMAL,Стандартная утренняя проверка балансов
+EVT-5246,2026-07-18 12:15:00,LOAN_SCHEDULE_INSPECT,Biometrics,178.89.44.112,"Almaty, Bostandyk District",CREDIT_SCHEDULE_PREVIEW,45,POSITIVE_DISCIPLINE,Просмотр деталей досрочного списания
+EVT-5247,2026-07-19 12:15:00,LOAN_SCHEDULE_INSPECT,Biometrics,178.89.44.112,"Almaty, Bostandyk District",CREDIT_SCHEDULE_PREVIEW,36,POSITIVE_DISCIPLINE,Просмотр деталей досрочного списания
+EVT-5248,2026-07-21 08:32:34,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.105.82,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,29,NORMAL,Стандартная утренняя проверка балансов
+EVT-5249,2026-07-25 08:32:38,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.173.79,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,29,NORMAL,Стандартная утренняя проверка балансов
+EVT-5250,2026-07-28 08:32:40,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.100.129,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,25,NORMAL,Стандартная утренняя проверка балансов
+EVT-5251,2026-07-29 08:32:34,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.95.209,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,27,NORMAL,Стандартная утренняя проверка балансов
+EVT-5252,2026-08-05 08:32:43,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.53.74,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,45,NORMAL,Стандартная утренняя проверка балансов
+EVT-5253,2026-08-08 08:32:27,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.11.200,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,20,NORMAL,Стандартная утренняя проверка балансов
+EVT-5254,2026-08-14 03:40:12,NIGHT_APP_CHECK,Biometrics,178.89.44.112,"Almaty, Medeu District",DASHBOARD_PREDELINQUENCY_RADAR,85,EARLY_WARNING_LATENT,Ночная проверка приложения во время ночного деплоя бэкенда
+EVT-5255,2026-08-15 08:32:48,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.81.31,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,16,NORMAL,Стандартная утренняя проверка балансов
+EVT-5256,2026-08-18 12:15:00,LOAN_SCHEDULE_INSPECT,Biometrics,178.89.44.112,"Almaty, Bostandyk District",CREDIT_SCHEDULE_PREVIEW,53,POSITIVE_DISCIPLINE,Просмотр деталей досрочного списания
+EVT-5257,2026-08-19 12:15:00,LOAN_SCHEDULE_INSPECT,Biometrics,178.89.44.112,"Almaty, Bostandyk District",CREDIT_SCHEDULE_PREVIEW,58,POSITIVE_DISCIPLINE,Просмотр деталей досрочного списания
+EVT-5258,2026-08-21 08:32:13,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.128.17,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,28,NORMAL,Стандартная утренняя проверка балансов
+EVT-5259,2026-08-22 08:32:18,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.48.197,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,17,NORMAL,Стандартная утренняя проверка балансов
+EVT-5260,2026-08-24 08:32:16,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.65.210,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,25,NORMAL,Стандартная утренняя проверка балансов
+EVT-5261,2026-08-26 08:32:18,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.107.18,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,45,NORMAL,Стандартная утренняя проверка балансов
+EVT-5262,2026-08-28 08:32:16,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.21.80,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,43,NORMAL,Стандартная утренняя проверка балансов
+EVT-5263,2026-09-02 08:32:35,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.70.71,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,40,NORMAL,Стандартная утренняя проверка балансов
+EVT-5264,2026-09-04 08:32:47,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.70.22,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,44,NORMAL,Стандартная утренняя проверка балансов
+EVT-5265,2026-09-06 08:32:34,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.175.179,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,17,NORMAL,Стандартная утренняя проверка балансов
+EVT-5266,2026-09-10 08:32:41,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.155.64,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,31,NORMAL,Стандартная утренняя проверка балансов
+EVT-5267,2026-09-11 08:32:36,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.63.156,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,32,NORMAL,Стандартная утренняя проверка балансов
+EVT-5268,2026-09-13 08:32:29,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.165.25,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,33,NORMAL,Стандартная утренняя проверка балансов
+EVT-5269,2026-09-15 08:32:43,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.91.143,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,27,NORMAL,Стандартная утренняя проверка балансов
+EVT-5270,2026-09-16 08:32:56,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.74.43,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,39,NORMAL,Стандартная утренняя проверка балансов
+EVT-5271,2026-09-18 08:32:15,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.22.13,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,42,NORMAL,Стандартная утренняя проверка балансов
+EVT-5272,2026-09-18 12:15:00,LOAN_SCHEDULE_INSPECT,Biometrics,178.89.44.112,"Almaty, Bostandyk District",CREDIT_SCHEDULE_PREVIEW,27,POSITIVE_DISCIPLINE,Просмотр деталей досрочного списания
+EVT-5273,2026-09-19 12:15:00,LOAN_SCHEDULE_INSPECT,Biometrics,178.89.44.112,"Almaty, Bostandyk District",CREDIT_SCHEDULE_PREVIEW,29,POSITIVE_DISCIPLINE,Просмотр деталей досрочного списания
+EVT-5274,2026-09-22 08:32:49,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.29.145,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,25,NORMAL,Стандартная утренняя проверка балансов
+EVT-5275,2026-10-01 08:32:22,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.43.207,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,23,NORMAL,Стандартная утренняя проверка балансов
+EVT-5276,2026-10-14 08:32:11,APP_SESSION_START,Biometrics (FaceID iPhone),178.89.196.58,"Almaty, Medeu District",DASHBOARD_ACCOUNTS,15,NORMAL,Стандартная утренняя проверка балансов
+EVT-5277,2026-10-14 03:40:12,NIGHT_APP_CHECK,Biometrics,178.89.44.112,"Almaty, Medeu District",DASHBOARD_PREDELINQUENCY_RADAR,85,EARLY_WARNING_LATENT,Ночная проверка приложения во время ночного деплоя бэкенда

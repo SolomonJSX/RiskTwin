@@ -13,6 +13,7 @@ dependencies = [
     "ortools>=9.8",
     "pandas>=3.0.6",
     "protobuf>=7.36.2",
+    "pyarrow>=26.0.0",
     "pytest>=9.1.1",
     "scikit-learn>=1.9.1",
     "shap>=0.49.1",

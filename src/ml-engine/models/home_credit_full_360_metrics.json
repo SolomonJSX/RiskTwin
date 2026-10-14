@@ -1,0 +1,15 @@
+{
+  "dataset_name": "Kaggle Home Credit 360-Degree (All 6 Tables Integrated)",
+  "total_borrowers": 163517,
+  "train_borrowers": 114526,
+  "test_borrowers": 24528,
+  "features_total": 43,
+  "default_rate": 0.0827,
+  "metrics": {
+    "pytorch_cross_attention_roc_auc": 0.7557,
+    "pytorch_pr_auc": 0.234,
+    "pytorch_accuracy": 0.6931,
+    "pytorch_f1": 0.2712,
+    "lightgbm_roc_auc": 0.7577
+  }
+}

@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="140 80 744 740" fill="none">
+  <defs>
+    <linearGradient id="emeraldDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#064E3B" />
+      <stop offset="100%" stop-color="#047857" />
+    </linearGradient>
+
+    <linearGradient id="emeraldMain" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#059669" />
+      <stop offset="100%" stop-color="#10B981" />
+    </linearGradient>
+
+    <linearGradient id="tealAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0D9488" />
+      <stop offset="100%" stop-color="#06B6D4" />
+    </linearGradient>
+
+    <linearGradient id="goldAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#FBBF24" />
+    </linearGradient>
+
+    <filter id="rhombusShadow" x="-20%" y="-20%" width="140%" height="140%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="16" stdDeviation="20" flood-color="#064E3B" flood-opacity="0.25" />
+    </filter>
+
+    <filter id="innerGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.15" />
+    </filter>
+  </defs>
+
+  <!-- Радарные концентрические окружности -->
+  <circle cx="512" cy="450" r="340" fill="none" stroke="#CBD5E1" stroke-width="2.5" stroke-dasharray="8,6" opacity="0.75" />
+  <circle cx="512" cy="450" r="260" fill="none" stroke="#94A3B8" stroke-width="2.5" opacity="0.65" />
+  <circle cx="512" cy="450" r="180" fill="none" stroke="#CBD5E1" stroke-width="2.5" stroke-dasharray="5,5" opacity="0.75" />
+
+  <!-- Фигуры ромбов и ступенчатых шевронов -->
+  <g filter="url(#rhombusShadow)">
+    <polygon points="512,160 792,440 512,720 232,440" fill="url(#emeraldDark)" stroke="#A7F3D0" stroke-width="6" />
+    <polygon points="512,205 747,440 512,675 277,440" fill="url(#emeraldMain)" opacity="0.95" />
+
+    <path
+      d="M 512 250 L 400 362 L 440 402 L 360 482 L 400 522 L 512 634 L 512 584 L 440 512 L 480 472 L 400 392 L 440 352 L 512 280 Z"
+      fill="#FFFFFF"
+      opacity="0.95"
+      filter="url(#innerGlow)"
+    />
+
+    <path
+      d="M 512 250 L 624 362 L 584 402 L 664 482 L 624 522 L 512 634 L 512 584 L 584 512 L 544 472 L 624 392 L 584 352 L 512 280 Z"
+      fill="url(#tealAccent)"
+      opacity="0.95"
+      filter="url(#innerGlow)"
+    />
+
+    <polygon points="512,380 572,440 512,500 452,440" fill="#FFFFFF" stroke="#059669" stroke-width="4" />
+    <polygon points="512,398 554,440 512,482 470,440" fill="url(#goldAccent)" />
+    <polygon points="512,416 536,440 512,464 488,440" fill="#FFFFFF" />
+
+    <polygon points="512,125 528,150 496,150" fill="#10B981" />
+    <polygon points="512,755 528,730 496,730" fill="#0D9488" />
+    <polygon points="197,440 222,424 222,456" fill="#10B981" />
+    <polygon points="827,440 802,424 802,456" fill="#0D9488" />
+  </g>
+</svg>

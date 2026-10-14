@@ -2,6 +2,7 @@ import pickle
 from pathlib import Path
 import pytest
 import numpy as np
+import pandas as pd
 import torch
 
 from app.infrastructure.deep_learning.cross_attention_net import DualTowerCrossAttentionNet
@@ -11,8 +12,12 @@ from app.infrastructure.deep_learning.cross_attention_net import DualTowerCrossA
 def dl_model_bundle():
     """Фикстура загрузки весов PyTorch нейросети и скалеров."""
     base_dir = Path(__file__).resolve().parent.parent
-    weights_path = base_dir / "models" / "deep_cross_attention_net.pt"
-    scalers_path = base_dir / "models" / "deep_learning_scalers.pkl"
+    weights_path = base_dir / "models" / "archive" / "deep_cross_attention_net.pt"
+    if not weights_path.exists():
+        weights_path = base_dir / "models" / "deep_cross_attention_net.pt"
+    scalers_path = base_dir / "models" / "archive" / "deep_learning_scalers.pkl"
+    if not scalers_path.exists():
+        scalers_path = base_dir / "models" / "deep_learning_scalers.pkl"
 
     assert weights_path.exists(), "Файл весов deep_cross_attention_net.pt должен существовать"
     assert scalers_path.exists(), "Файл скалеров deep_learning_scalers.pkl должен существовать"
@@ -41,11 +46,11 @@ def dl_model_bundle():
 
 def prepare_tensors(bundle, fin_dict: dict, psycho_dict: dict):
     """Хелпер нормализации и перевода в PyTorch тензоры."""
-    fin_vals = np.array([[fin_dict[col] for col in bundle["fin_cols"]]])
-    psycho_vals = np.array([[psycho_dict[col] for col in bundle["psycho_cols"]]])
+    fin_df = pd.DataFrame([[fin_dict[col] for col in bundle["fin_cols"]]], columns=bundle["fin_cols"])
+    psycho_df = pd.DataFrame([[psycho_dict[col] for col in bundle["psycho_cols"]]], columns=bundle["psycho_cols"])
 
-    fin_scaled = bundle["scaler_fin"].transform(fin_vals)
-    psycho_scaled = bundle["scaler_psycho"].transform(psycho_vals)
+    fin_scaled = bundle["scaler_fin"].transform(fin_df)
+    psycho_scaled = bundle["scaler_psycho"].transform(psycho_df)
 
     fin_tensor = torch.tensor(fin_scaled, dtype=torch.float32)
     psycho_tensor = torch.tensor(psycho_scaled, dtype=torch.float32)

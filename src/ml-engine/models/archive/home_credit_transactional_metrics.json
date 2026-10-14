@@ -1,0 +1,14 @@
+{
+  "dataset_name": "Kaggle Home Credit Default Risk (163,517 borrowers, 6.8M transactions)",
+  "total_borrowers": 163517,
+  "train_borrowers": 114526,
+  "test_borrowers": 24528,
+  "default_rate": 0.0827,
+  "metrics": {
+    "pytorch_cross_attention_roc_auc": 0.6667,
+    "pytorch_pr_auc": 0.1573,
+    "pytorch_accuracy": 0.6233,
+    "pytorch_f1": 0.2138,
+    "lightgbm_roc_auc": 0.6606
+  }
+}

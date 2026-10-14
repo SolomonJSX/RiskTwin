@@ -7,6 +7,7 @@ import torch
 
 from app.domain.interfaces import IScoringModel
 from app.domain.entities import ClientFeatureVector
+from app.domain.behavioral_distress import BehavioralDistressEngine
 from app.infrastructure.deep_learning.cross_attention_net import DualTowerCrossAttentionNet
 
 
@@ -16,16 +17,22 @@ class DeepCrossAttentionScoringModel(IScoringModel):
     и механизмом Cross-Attention (PyTorch).
     
     Осуществляет:
-    1. Токенизацию признаков (7 финансовых и 9 психоэмоциональных).
+    1. Токенизацию признаков (7 финансовых и 9 объективных поведенческих).
     2. Вычисление честной матрицы синергетического внимания между признаками.
-    3. Multi-task расчет: вероятность дефолта P_Default и время выживаемости (дни).
+    3. Оценку скрытого психологического и финансового дистресса (Unsupervised GMM).
+    4. Multi-task расчет: вероятность дефолта P_Default и время выживаемости (дни).
     """
 
     def __init__(self):
         base_dir = Path(__file__).resolve().parent.parent.parent.parent
-        self.weights_path = base_dir / "models" / "deep_cross_attention_net.pt"
-        self.scalers_path = base_dir / "models" / "deep_learning_scalers.pkl"
+        self.weights_path = base_dir / "models" / "archive" / "deep_cross_attention_net.pt"
+        if not self.weights_path.exists():
+            self.weights_path = base_dir / "models" / "deep_cross_attention_net.pt"
+        self.scalers_path = base_dir / "models" / "archive" / "deep_learning_scalers.pkl"
+        if not self.scalers_path.exists():
+            self.scalers_path = base_dir / "models" / "deep_learning_scalers.pkl"
 
+        self.distress_engine = BehavioralDistressEngine()
         self._is_loaded = False
         self.device = torch.device("cpu")
 
@@ -90,11 +97,11 @@ class DeepCrossAttentionScoringModel(IScoringModel):
                 val = f_dict.get(col, 0.0)
             psycho_values.append(float(val))
 
-        fin_arr = np.array([fin_values], dtype=np.float32)
-        psycho_arr = np.array([psycho_values], dtype=np.float32)
+        fin_df = pd.DataFrame([fin_values], columns=self.fin_cols)
+        psycho_df = pd.DataFrame([psycho_values], columns=self.psycho_cols)
 
-        fin_scaled = self.scaler_fin.transform(fin_arr)
-        psycho_scaled = self.scaler_psycho.transform(psycho_arr)
+        fin_scaled = self.scaler_fin.transform(fin_df)
+        psycho_scaled = self.scaler_psycho.transform(psycho_df)
 
         return fin_scaled, psycho_scaled
 
@@ -140,8 +147,8 @@ class DeepCrossAttentionScoringModel(IScoringModel):
         p_60d = min(1.0, max(p_30d, round(p_30d * 1.25, 4)))
         days = int(round(float(days_pred.item())))
 
-        # attn_weights: [1, 7, 9] -> переводим в numpy
-        attn_matrix = attn_weights.squeeze(0).cpu().numpy()
+        # Вычисление объективного поведенческого дистресса (Unsupervised GMM)
+        distress_eval = self.distress_engine.evaluate_distress(features)
 
         return {
             "p_default_30d": round(p_30d, 4),
@@ -150,4 +157,5 @@ class DeepCrossAttentionScoringModel(IScoringModel):
             "attention_matrix": attn_matrix,
             "fin_cols": self.fin_cols,
             "psycho_cols": self.psycho_cols,
+            "distress_evaluation": distress_eval,
         }

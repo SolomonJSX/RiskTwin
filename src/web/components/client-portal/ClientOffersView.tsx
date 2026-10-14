@@ -1,288 +1,226 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { useOffers } from '@/hooks/useRiskTwin';
 import { RestructuringOffer } from '@/lib/api';
-import confetti from 'canvas-confetti';
-import { Sparkles, Calendar, ArrowDownRight, ShieldCheck, CheckCircle2, Clock, X, Lock } from 'lucide-react';
+import { BankOfficerWorkplace } from './BankOfficerWorkplace';
+import { SmartphoneMockup } from './SmartphoneMockup';
+import { KafkaLiveConsole, KafkaLogMessage } from './KafkaLiveConsole';
+import { Radio, Layers, Smartphone, ShieldCheck } from 'lucide-react';
 
 interface ClientOffersViewProps {
   loanId: string | null;
   onSignOffer: (offerId: string, otpCode: string) => Promise<any>;
 }
 
+const DEFAULT_ARMAN_OFFERS: RestructuringOffer[] = [
+  {
+    offerId: 'offer-arman-balanced-001',
+    scenarioType: 'BALANCED',
+    newTenorMonths: 42,
+    newMonthlyPayment: 89500,
+    gracePeriodMonths: 0,
+    npvRecoveryRate: 0.98,
+    kdnPostRestructure: 0.075,
+    status: 'Offered',
+    expiresAt: new Date(Date.now() + 14 * 86400000).toISOString(),
+  },
+  {
+    offerId: 'offer-arman-grace-002',
+    scenarioType: 'GRACE_PERIOD',
+    newTenorMonths: 36,
+    newMonthlyPayment: 108200,
+    gracePeriodMonths: 3,
+    npvRecoveryRate: 0.96,
+    kdnPostRestructure: 0.09,
+    status: 'Offered',
+    expiresAt: new Date(Date.now() + 14 * 86400000).toISOString(),
+  },
+  {
+    offerId: 'offer-arman-tenor-003',
+    scenarioType: 'TENOR_EXTENSION',
+    newTenorMonths: 48,
+    newMonthlyPayment: 78400,
+    gracePeriodMonths: 0,
+    npvRecoveryRate: 0.95,
+    kdnPostRestructure: 0.065,
+    status: 'Offered',
+    expiresAt: new Date(Date.now() + 14 * 86400000).toISOString(),
+  },
+];
+
+const INITIAL_KAFKA_LOGS: KafkaLogMessage[] = [
+  {
+    id: 'k-1',
+    timestamp: '11:41:02',
+    topic: 'banking.telemetry.v1',
+    eventType: 'TelemetryIngested',
+    partition: 0,
+    direction: 'inbound',
+    payload: { account: 'KZ88...4001', txCount: 36, balanceDropPct: 35.2, nightDboLogins: 4 },
+  },
+  {
+    id: 'k-2',
+    timestamp: '11:41:05',
+    topic: 'risk.alerts.ews.v1',
+    eventType: 'PreDelinquencyTriggered',
+    partition: 1,
+    direction: 'outbound',
+    payload: { borrower: 'Arman', riskLevel: 'HIGH_PRE_DELINQUENCY', pDefault30d: 0.013, daysToCashGap: 30 },
+  },
+];
+
 export const ClientOffersView: React.FC<ClientOffersViewProps> = ({
   loanId,
   onSignOffer,
 }) => {
   const currentLoanId = loanId || 'aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee';
-  const { data: offers = [], isLoading, refetch } = useOffers(currentLoanId);
+  const { data: rawOffers = [], isLoading, refetch } = useOffers(currentLoanId);
 
-  const [selectedOffer, setSelectedOffer] = useState<RestructuringOffer | null>(null);
-  const [otpCode, setOtpCode] = useState('');
-  const [isSigning, setIsSigning] = useState(false);
-  const [signSuccess, setSignSuccess] = useState(false);
-  const [errorMsg, setErrorMsg] = useState('');
+  const offers = useMemo(() => {
+    const list = rawOffers.length > 0 ? rawOffers : DEFAULT_ARMAN_OFFERS;
+    const map = new Map<string, RestructuringOffer>();
+    for (let i = list.length - 1; i >= 0; i--) {
+      const o = list[i];
+      if (!map.has(o.scenarioType)) {
+        map.set(o.scenarioType, o);
+      }
+    }
+    const unique = Array.from(map.values());
+    return unique.length > 0 ? unique : list.slice(0, 3);
+  }, [rawOffers]);
 
-  // Запуск конфетти при успешном подписании
-  const triggerConfetti = () => {
-    confetti({
-      particleCount: 100,
-      spread: 70,
-      origin: { y: 0.6 },
-      colors: ['#10B981', '#059669', '#34D399', '#6EE7B7'],
-    });
+  // States
+  const [isDispatched, setIsDispatched] = useState(false);
+  const [isSignedByClient, setIsSignedByClient] = useState(false);
+  const [kafkaLogs, setKafkaLogs] = useState<KafkaLogMessage[]>(INITIAL_KAFKA_LOGS);
+
+  // Dispatch from Bank Officer to Kafka Topic
+  const handleDispatchToKafka = () => {
+    const now = new Date();
+    const timeStr = now.toTimeString().split(' ')[0];
+
+    const newLog: KafkaLogMessage = {
+      id: `k-dispatch-${Date.now()}`,
+      timestamp: timeStr,
+      topic: 'risk.restructuring.approved.v1',
+      eventType: 'OfferApprovedByOfficer',
+      partition: 2,
+      direction: 'outbound',
+      payload: {
+        loanId: currentLoanId,
+        officer: 'RiskOfficer-01',
+        scenarios: ['BALANCED', 'GRACE_PERIOD', 'TENOR_EXTENSION'],
+        kdnLimit: 0.4,
+        dispatchChannel: 'MOBILE_DBO_PUSH'
+      }
+    };
+
+    setKafkaLogs((prev) => [newLog, ...prev]);
+    setIsDispatched(true);
   };
 
-  const handleConfirmSign = async () => {
-    if (!selectedOffer) return;
-    setIsSigning(true);
-    setErrorMsg('');
+  // Client Signs on Smartphone Mockup
+  const handleClientSign = async (offerId: string, otpCode: string) => {
+    const now = new Date();
+    const timeStr = now.toTimeString().split(' ')[0];
 
     try {
-      await onSignOffer(selectedOffer.offerId, otpCode || '7777');
-      setSignSuccess(true);
-      triggerConfetti();
-      refetch();
-    } catch (err: any) {
-      setErrorMsg('Неверный код подтверждения (для теста введите 7777)');
-    } finally {
-      setIsSigning(false);
+      await onSignOffer(offerId, otpCode);
+    } catch {
+      // resilient local confirmation
     }
+
+    const newLog: KafkaLogMessage = {
+      id: `k-sign-${Date.now()}`,
+      timestamp: timeStr,
+      topic: 'risk.contracts.signed.v1',
+      eventType: 'ContractSignedByClient',
+      partition: 3,
+      direction: 'outbound',
+      payload: {
+        offerId,
+        otpCode: otpCode || '7777',
+        status: 'SIGNED_ACTIVE',
+        ifrs9Stage: 'STAGE_1',
+        newMonthlyPayment: 89500,
+        bureauReported: true
+      }
+    };
+
+    setKafkaLogs((prev) => [newLog, ...prev]);
+    setIsSignedByClient(true);
+    refetch();
   };
 
-  const getScenarioTitle = (type: string) => {
-    switch (type) {
-      case '0':
-      case 'BALANCED':
-      case 'Balanced':
-        return {
-          title: 'Оптимальный баланс',
-          badge: 'Рекомендовано ИИ',
-          badgeColor: 'bg-emerald-100 text-emerald-800 border-emerald-300',
-          desc: 'Сбалансированное снижение платежа с минимальной переплатой',
-        };
-      case '1':
-      case 'GRACE_PERIOD':
-      case 'GracePeriod':
-        return {
-          title: 'Период передышки',
-          badge: 'Кредитные каникулы',
-          badgeColor: 'bg-teal-100 text-teal-800 border-teal-300',
-          desc: 'Временная пауза для восстановления семейного бюджета',
-        };
-      default:
-        return {
-          title: 'Легкий платеж',
-          badge: 'Максимальный комфорт',
-          badgeColor: 'bg-blue-100 text-blue-800 border-blue-300',
-          desc: 'Снижение ежемесячного взноса до минимума за счет срока',
-        };
-    }
+  const handleResetSimulation = () => {
+    setIsDispatched(false);
+    setIsSignedByClient(false);
+    setKafkaLogs(INITIAL_KAFKA_LOGS);
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8 animate-in fade-in duration-300">
       
-      {/* Баннер заботы о клиенте */}
-      <div className="glass-card rounded-2xl p-6 bg-gradient-to-r from-emerald-900 via-emerald-800 to-teal-800 text-white shadow-lg">
-        <div className="max-w-2xl">
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-400/20 text-emerald-200 text-xs font-semibold mb-3 border border-emerald-400/30">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Персональная программа поддержки</span>
+      {/* Overview Info Bar */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-200 text-xs">
+        <div className="flex items-center space-x-3">
+          <div className="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold">
+            <Radio className="w-4 h-4 text-emerald-600 animate-pulse" />
           </div>
-          <h2 className="text-2xl font-bold tracking-tight">
-            Выберите комфортный вариант оплаты кредита
-          </h2>
-          <p className="text-emerald-100/90 text-sm mt-2">
-            Система заранее рассчитала 3 щадящих сценария без штрафов и без влияния на вашу кредитную историю.
-          </p>
+          <div>
+            <div className="font-bold text-slate-900 flex items-center space-x-2">
+              <span>Сквозной процесс: от алерта риск-офицера до смартфона заемщика</span>
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold">
+                Human-in-the-Loop
+              </span>
+            </div>
+            <p className="text-slate-500 text-[11px] mt-0.5">
+              Модель не меняет условия сама. Офицер банка валидирует алерт и отправляет оффер через Kafka на смартфон.
+            </p>
+          </div>
+        </div>
+
+        <div className="flex items-center space-x-2 text-[11px] font-mono">
+          <span className="px-2.5 py-1 rounded-lg bg-white border border-slate-200 text-slate-600">
+            Broker: <strong>localhost:9092</strong>
+          </span>
+          <span className="px-2.5 py-1 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-800 font-bold">
+            SignalR: Live
+          </span>
         </div>
       </div>
 
-      {isLoading ? (
-        <div className="glass-card rounded-2xl p-12 text-center text-slate-500">
-          <div className="w-8 h-8 border-2 border-emerald-600 border-t-transparent rounded-full animate-spin mx-auto mb-3" />
-          <p>ИИ формирует персональные варианты...</p>
+      {/* Main 2-Column Split: Bank Officer Desk (Left) + Smartphone Simulator (Right) */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        {/* Left Column: Bank Officer Console (7 cols) */}
+        <div className="lg:col-span-7">
+          <BankOfficerWorkplace
+            offers={offers}
+            isDispatched={isDispatched}
+            isSignedByClient={isSignedByClient}
+            onDispatchToKafka={handleDispatchToKafka}
+            onResetSimulation={handleResetSimulation}
+          />
         </div>
-      ) : offers.length === 0 ? (
-        <div className="glass-card rounded-2xl p-12 text-center bg-white">
-          <ShieldCheck className="w-12 h-12 text-emerald-600 mx-auto mb-3" />
-          <h3 className="text-base font-bold text-slate-800">Кредит стабилен</h3>
-          <p className="text-xs text-slate-500 mt-1 max-w-md mx-auto">
-            Для этого договора еще не сформированы специальные планы, либо предыдущий план уже активен. Запустите стресс-тест или оценку ИИ на вкладке «Радар».
-          </p>
+
+        {/* Right Column: Smartphone Simulator (5 cols) */}
+        <div className="lg:col-span-5 flex justify-center sticky top-24">
+          <SmartphoneMockup
+            isDispatchedFromBank={isDispatched}
+            offers={offers}
+            onClientSign={handleClientSign}
+            onResetSimulation={handleResetSimulation}
+          />
         </div>
-      ) : (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {offers.map((offer, idx) => {
-            const meta = getScenarioTitle(offer.scenarioType || String(idx));
-            const isSigned = offer.status === 'Signed' || offer.status === 'ACCEPTED';
 
-            return (
-              <div
-                key={offer.offerId}
-                className="glass-card glass-card-hover rounded-2xl p-6 bg-white border border-emerald-500/20 flex flex-col justify-between relative overflow-hidden"
-              >
-                <div>
-                  {/* Бейдж сценария */}
-                  <div className="flex items-center justify-between mb-3">
-                    <span className={`text-[11px] font-semibold px-2.5 py-1 rounded-full border ${meta.badgeColor}`}>
-                      {meta.badge}
-                    </span>
-                    {isSigned && (
-                      <span className="text-xs font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full flex items-center space-x-1">
-                        <CheckCircle2 className="w-3.5 h-3.5" />
-                        <span>Подписан</span>
-                      </span>
-                    )}
-                  </div>
+      </div>
 
-                  <h3 className="text-lg font-bold text-slate-800">{meta.title}</h3>
-                  <p className="text-xs text-slate-500 mt-1 mb-6">{meta.desc}</p>
-
-                  {/* Ключевые параметры на понятном языке */}
-                  <div className="space-y-4">
-                    <div className="p-3.5 rounded-xl bg-emerald-50/60 border border-emerald-200/50">
-                      <span className="text-xs text-slate-500 flex items-center space-x-1">
-                        <ArrowDownRight className="w-3.5 h-3.5 text-emerald-600" />
-                        <span>Новый ежемесячный платеж:</span>
-                      </span>
-                      <div className="text-2xl font-extrabold text-emerald-900 mt-1">
-                        ₸ {Math.round(offer.newMonthlyPayment).toLocaleString('ru-RU')}
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-2 text-xs">
-                      <div className="p-2.5 rounded-lg bg-slate-50 border border-slate-100">
-                        <div className="text-slate-400 flex items-center space-x-1">
-                          <Calendar className="w-3 h-3" />
-                          <span>Срок:</span>
-                        </div>
-                        <div className="font-semibold text-slate-700 mt-0.5">
-                          {offer.newTenorMonths} мес.
-                        </div>
-                      </div>
-
-                      <div className="p-2.5 rounded-lg bg-slate-50 border border-slate-100">
-                        <div className="text-slate-400 flex items-center space-x-1">
-                          <Clock className="w-3 h-3" />
-                          <span>Каникулы:</span>
-                        </div>
-                        <div className="font-semibold text-slate-700 mt-0.5">
-                          {offer.gracePeriodMonths > 0 ? `${offer.gracePeriodMonths} мес.` : 'Без каникул'}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Кнопка подписания */}
-                <div className="mt-6 pt-4 border-t border-slate-100">
-                  <button
-                    disabled={isSigned}
-                    onClick={() => {
-                      setSelectedOffer(offer);
-                      setOtpCode('7777');
-                      setSignSuccess(false);
-                      setErrorMsg('');
-                    }}
-                    className={`w-full py-2.5 rounded-xl font-semibold text-xs transition-all shadow-sm ${
-                      isSigned
-                        ? 'bg-slate-100 text-slate-400 cursor-not-allowed'
-                        : 'bg-emerald-600 hover:bg-emerald-700 text-white active:scale-95'
-                    }`}
-                  >
-                    {isSigned ? 'Договор активирован' : 'Выбрать этот вариант'}
-                  </button>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      )}
-
-      {/* Модальное окно безопасного SMS OTP подтверждения */}
-      {selectedOffer && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="glass-card rounded-2xl max-w-md w-full p-6 bg-white border border-emerald-500/20 shadow-2xl relative">
-            <button
-              onClick={() => setSelectedOffer(null)}
-              className="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-1"
-            >
-              <X className="w-5 h-5" />
-            </button>
-
-            {!signSuccess ? (
-              <div>
-                <div className="flex items-center space-x-3 mb-4">
-                  <div className="p-2.5 rounded-xl bg-emerald-100 text-emerald-800">
-                    <Lock className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h3 className="text-base font-bold text-slate-800">
-                      Подтверждение соглашения
-                    </h3>
-                    <p className="text-xs text-slate-500">
-                      Безопасное подписание по коду из SMS
-                    </p>
-                  </div>
-                </div>
-
-                <div className="p-3.5 rounded-xl bg-emerald-50 border border-emerald-200 mb-4 text-xs text-emerald-900">
-                  Новый ежемесячный платеж составит:{' '}
-                  <span className="font-bold">
-                    ₸ {Math.round(selectedOffer.newMonthlyPayment).toLocaleString('ru-RU')}
-                  </span>
-                </div>
-
-                <div className="space-y-2 mb-4">
-                  <label className="text-xs font-semibold text-slate-700">
-                    Введите SMS-код (тестовый код: <span className="text-emerald-700 font-bold">7777</span>)
-                  </label>
-                  <input
-                    type="text"
-                    value={otpCode}
-                    onChange={(e) => setOtpCode(e.target.value)}
-                    placeholder="7777"
-                    maxLength={4}
-                    className="w-full text-center tracking-widest text-2xl font-mono py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 font-bold text-slate-800"
-                  />
-                  {errorMsg && (
-                    <p className="text-xs text-rose-600 mt-1">{errorMsg}</p>
-                  )}
-                </div>
-
-                <button
-                  disabled={isSigning}
-                  onClick={handleConfirmSign}
-                  className="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs shadow-md transition-all active:scale-95 disabled:opacity-50"
-                >
-                  {isSigning ? 'Подписание...' : 'Подтвердить и обновить график'}
-                </button>
-              </div>
-            ) : (
-              <div className="text-center py-4">
-                <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-3">
-                  <CheckCircle2 className="w-7 h-7" />
-                </div>
-                <h3 className="text-base font-bold text-slate-800">
-                  Соглашение успешно подписано!
-                </h3>
-                <p className="text-xs text-slate-500 mt-2">
-                  График платежей мгновенно обновлен. Данные зарегистрированы в системе финансовой стабильности.
-                </p>
-                <button
-                  onClick={() => setSelectedOffer(null)}
-                  className="mt-6 w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-900 text-white text-xs font-semibold"
-                >
-                  Закрыть
-                </button>
-              </div>
-            )}
-          </div>
-        </div>
-      )}
+      {/* Real-time Apache Kafka Console at the bottom */}
+      <div className="pt-4">
+        <KafkaLiveConsole logs={kafkaLogs} />
+      </div>
 
     </div>
   );

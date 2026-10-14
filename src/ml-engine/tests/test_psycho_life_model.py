@@ -8,9 +8,15 @@ import pandas as pd
 @pytest.fixture(scope="module")
 def psycho_model_artifacts():
     base_dir = Path(__file__).resolve().parent.parent
-    model_path = base_dir / "models" / "psycho_life_lgbm.pkl"
-    explainer_path = base_dir / "models" / "psycho_shap_explainer.pkl"
-    cols_path = base_dir / "models" / "psycho_feature_columns.pkl"
+    model_path = base_dir / "models" / "archive" / "psycho_life_lgbm.pkl"
+    if not model_path.exists():
+        model_path = base_dir / "models" / "psycho_life_lgbm.pkl"
+    explainer_path = base_dir / "models" / "archive" / "psycho_shap_explainer.pkl"
+    if not explainer_path.exists():
+        explainer_path = base_dir / "models" / "psycho_shap_explainer.pkl"
+    cols_path = base_dir / "models" / "archive" / "psycho_feature_columns.pkl"
+    if not cols_path.exists():
+        cols_path = base_dir / "models" / "psycho_feature_columns.pkl"
 
     assert model_path.exists(), "Модель psycho_life_lgbm.pkl должна существовать"
     assert explainer_path.exists(), "Эксплейнер psycho_shap_explainer.pkl должен существовать"

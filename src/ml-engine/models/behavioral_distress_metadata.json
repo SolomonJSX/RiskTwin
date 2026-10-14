@@ -1,0 +1,78 @@
+{
+  "total_samples": 163517,
+  "feature_names": [
+    "cash_panic_ratio",
+    "payment_delay_distress",
+    "deficit_burden_ratio",
+    "rejection_desperation_rate",
+    "bnpl_fragmentation_burden",
+    "bureau_shock_severity"
+  ],
+  "clusters": {
+    "0": {
+      "rank": 0,
+      "code": "STABLE_DISCIPLINE",
+      "name": "Финансовая устойчивость и самоконтроль",
+      "risk_level": "LOW",
+      "default_rate": 0.0751,
+      "size": 118873,
+      "feature_profile": {
+        "cash_panic_ratio": 0.0,
+        "payment_delay_distress": 0.0,
+        "deficit_burden_ratio": 0.2155,
+        "rejection_desperation_rate": 0.0665,
+        "bnpl_fragmentation_burden": 2.9913,
+        "bureau_shock_severity": 0.0
+      }
+    },
+    "1": {
+      "rank": 1,
+      "code": "LATENT_ANXIETY",
+      "name": "Латентная тревожность и дробление рассрочек",
+      "risk_level": "MODERATE",
+      "default_rate": 0.0971,
+      "size": 17381,
+      "feature_profile": {
+        "cash_panic_ratio": 0.0,
+        "payment_delay_distress": 0.0,
+        "deficit_burden_ratio": 1.2044,
+        "rejection_desperation_rate": 0.1026,
+        "bnpl_fragmentation_burden": 4.0012,
+        "bureau_shock_severity": 1.823
+      }
+    },
+    "2": {
+      "rank": 2,
+      "code": "ACUTE_PANIC",
+      "name": "Острая паника: обналичивание кредиток и отказы",
+      "risk_level": "HIGH_EARLY_WARNING",
+      "default_rate": 0.1048,
+      "size": 22590,
+      "feature_profile": {
+        "cash_panic_ratio": 44.755,
+        "payment_delay_distress": 0.0,
+        "deficit_burden_ratio": 0.6145,
+        "rejection_desperation_rate": 0.1036,
+        "bnpl_fragmentation_burden": 3.6612,
+        "bureau_shock_severity": 0.5231
+      }
+    },
+    "3": {
+      "rank": 3,
+      "code": "CHRONIC_EXHAUSTION",
+      "name": "Хроническое истощение и дефолтный коллапс",
+      "risk_level": "CRITICAL",
+      "default_rate": 0.1151,
+      "size": 4673,
+      "feature_profile": {
+        "cash_panic_ratio": 6.0937,
+        "payment_delay_distress": 0.5759,
+        "deficit_burden_ratio": 0.8594,
+        "rejection_desperation_rate": 0.0885,
+        "bnpl_fragmentation_burden": 3.0893,
+        "bureau_shock_severity": 2.5679
+      }
+    }
+  },
+  "validation_note": "Unsupervised Gaussian Mixture Model fitted on raw Home Credit transactional telemetry."
+}

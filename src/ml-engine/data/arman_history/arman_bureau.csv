@@ -1,0 +1,3 @@
+SK_ID_CURR,SK_ID_BUREAU,CREDIT_ACTIVE,CREDIT_CURRENCY,DAYS_CREDIT,CREDIT_DAY_OVERDUE,DAYS_CREDIT_ENDDATE,AMT_CREDIT_SUM,AMT_CREDIT_SUM_DEBT,AMT_CREDIT_SUM_OVERDUE,CNT_CREDIT_PROLONG,CREDIT_TYPE,BANK_NAME,STATUS_PKB
+999001,500001,Closed,KZT,-1200,0,-840,500000.0,0.0,0.0,0,Consumer credit,ForteBank (Потребительский беззалоговый),Полностью закрыт без единого дня просрочки
+999001,500002,Closed,KZT,-800,0,-440,350000.0,0.0,0.0,0,Credit card,Jusan Bank (Кредитная карта),Полностью закрыта по заявлению клиента

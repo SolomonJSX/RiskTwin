@@ -1,6 +1,9 @@
 import logging
+import warnings
 from concurrent import futures
 import grpc
+
+warnings.filterwarnings('ignore', category=UserWarning, module='sklearn')
 
 from app.proto import ml_inference_pb2_grpc
 from app.infrastructure.deep_learning.deep_scoring_model import DeepCrossAttentionScoringModel

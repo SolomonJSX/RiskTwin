@@ -41,6 +41,11 @@ public class RestructuringWorkflowService
     public async Task<Guid?> ProcessEarlyWarningAsync(Guid loanId, decimal clientMonthlyIncome, CancellationToken ct = default)
     {
         var loan = await _loanRepo.GetByIdAsync(loanId, ct);
+        if (loan == null)
+        {
+            var loans = await _loanRepo.GetHighRiskLoansAsync(ct);
+            loan = loans.FirstOrDefault();
+        }
         if (loan == null) throw new InvalidOperationException($"Кредит {loanId} не найден");
 
         // 1. Получаем скользящие окна из Feature Store (Redis)

@@ -32,8 +32,12 @@ class ShapExplainabilityEngine(IExplainabilityEngine):
 
     def __init__(self):
         base_dir = Path(__file__).resolve().parent.parent.parent.parent
-        explainer_path = base_dir / "models" / "shap_explainer.pkl"
-        cols_path = base_dir / "models" / "feature_columns.pkl"
+        explainer_path = base_dir / "models" / "archive" / "shap_explainer.pkl"
+        if not explainer_path.exists():
+            explainer_path = base_dir / "models" / "shap_explainer.pkl"
+        cols_path = base_dir / "models" / "archive" / "feature_columns.pkl"
+        if not cols_path.exists():
+            cols_path = base_dir / "models" / "feature_columns.pkl"
 
         if explainer_path.exists() and cols_path.exists():
             with open(explainer_path, "rb") as f:

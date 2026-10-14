@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RiskTwin — Презентация проекта | Республиканский конкурс 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #07090e;
+      --bg-card: #0f1420;
+      --bg-card-border: #1e293b;
+      --accent-cyan: #06b6d4;
+      --accent-blue: #3b82f6;
+      --accent-emerald: #10b981;
+      --accent-amber: #f59e0b;
+      --accent-rose: #f43f5e;
+      --accent-purple: #8b5cf6;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      overflow: hidden;
+      height: 100vh;
+      width: 100vw;
+      user-select: none;
+    }
+
+    /* Ambient lighting */
+    .ambient-glow {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      background: 
+        radial-gradient(circle at 15% 20%, rgba(6, 182, 212, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 85% 80%, rgba(139, 92, 246, 0.08) 0%, transparent 40%);
+    }
+
+    /* Top bar */
+    .top-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      background: rgba(7, 9, 14, 0.85);
+      backdrop-filter: blur(12px);
+      z-index: 50;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-logo {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 16px;
+      color: #fff;
+      box-shadow: 0 0 16px rgba(6, 182, 212, 0.4);
+    }
+
+    .brand-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: -0.02em;
+      background: linear-gradient(to right, #fff, #94a3b8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .contest-badge {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 4px 10px;
+      border-radius: 100px;
+      background: rgba(6, 182, 212, 0.1);
+      border: 1px solid rgba(6, 182, 212, 0.3);
+      color: var(--accent-cyan);
+      font-weight: 600;
+    }
+
+    .nav-controls {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .timer-pill {
+      font-family: 'Fira Code', monospace;
+      font-size: 14px;
+      padding: 5px 12px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-main);
+    }
+
+    .timer-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-emerald);
+      box-shadow: 0 0 8px var(--accent-emerald);
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    .btn-action {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--text-main);
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-action:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    /* Presentation Slide viewport */
+    .slider-viewport {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      padding-top: 60px;
+      padding-bottom: 50px;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .slide-container {
+      width: 92%;
+      max-width: 1400px;
+      height: 84vh;
+      position: relative;
+    }
+
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateX(30px) scale(0.98);
+      transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 32px 40px;
+      border-radius: 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--bg-card-border);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    }
+
+    .slide.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(0) scale(1);
+    }
+
+    /* Slide Typography */
+    .slide-header {
+      margin-bottom: 24px;
+    }
+
+    .slide-tag {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent-cyan);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .slide-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: #fff;
+    }
+
+    .slide-subtitle {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-top: 6px;
+      font-weight: 400;
+    }
+
+    .slide-content {
+      flex: 1;
+      display: flex;
+      gap: 28px;
+      overflow-y: auto;
+      padding-right: 6px;
+    }
+
+    /* Grids & Cards */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      width: 100%;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      width: 100%;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      width: 100%;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 14px;
+      padding: 20px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      border-color: rgba(6, 182, 212, 0.3);
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .card-highlight {
+      border: 1px solid rgba(6, 182, 212, 0.35);
+      background: linear-gradient(145deg, rgba(6, 182, 212, 0.06), rgba(15, 20, 32, 0.8));
+    }
+
+    .card-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card-p {
+      font-size: 13.5px;
+      line-height: 1.6;
+      color: var(--text-muted);
+    }
+
+    .stat-huge {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 40px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin: 10px 0 6px 0;
+      background: linear-gradient(135deg, #fff, var(--accent-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      font-family: 'Fira Code', monospace;
+    }
+
+    .badge-cyan { background: rgba(6, 182, 212, 0.15); color: var(--accent-cyan); border: 1px solid rgba(6, 182, 212, 0.3); }
+    .badge-rose { background: rgba(244, 63, 94, 0.15); color: var(--accent-rose); border: 1px solid rgba(244, 63, 94, 0.3); }
+    .badge-emerald { background: rgba(16, 185, 129, 0.15); color: var(--accent-emerald); border: 1px solid rgba(16, 185, 129, 0.3); }
+    .badge-amber { background: rgba(245, 158, 11, 0.15); color: var(--accent-amber); border: 1px solid rgba(245, 158, 11, 0.3); }
+
+    /* Custom Tables */
+    .table-modern {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    .table-modern th {
+      text-align: left;
+      padding: 10px 14px;
+      color: var(--text-muted);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 0.05em;
+    }
+
+    .table-modern td {
+      padding: 11px 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      color: var(--text-main);
+    }
+
+    .table-modern tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    /* Speaker Notes Drawer */
+    .notes-panel {
+      position: fixed;
+      bottom: 50px;
+      left: 50%;
+      transform: translateX(-50%) translateY(120%);
+      width: 90%;
+      max-width: 1100px;
+      background: rgba(15, 20, 32, 0.96);
+      border: 1px solid var(--accent-cyan);
+      border-radius: 14px;
+      padding: 20px 28px;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.8);
+      z-index: 100;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .notes-panel.visible {
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .notes-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .notes-title {
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-cyan);
+    }
+
+    .notes-text {
+      font-size: 14.5px;
+      line-height: 1.6;
+      color: #e2e8f0;
+      font-style: italic;
+    }
+
+    /* Bottom Status Bar */
+    .bottom-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 50px;
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      background: rgba(7, 9, 14, 0.9);
+      backdrop-filter: blur(8px);
+      z-index: 50;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .progress-track {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 2px;
+      background: linear-gradient(to right, var(--accent-cyan), var(--accent-purple));
+      transition: width 0.3s ease;
+    }
+
+    .slide-indexer {
+      font-family: 'Space Grotesk', monospace;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .shortcuts-hint {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 12px;
+    }
+
+    .key {
+      padding: 2px 6px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 4px;
+      font-family: 'Fira Code', monospace;
+      font-size: 11px;
+      color: #fff;
+    }
+
+    /* Diagrams & Architecture visualizations */
+    .arch-flow {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 16px;
+      background: rgba(0, 0, 0, 0.25);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      width: 100%;
+    }
+
+    .arch-node {
+      flex: 1;
+      padding: 14px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .arch-node-title {
+      font-weight: 600;
+      font-size: 13px;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .arch-node-desc {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .arch-arrow {
+      color: var(--accent-cyan);
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.1);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ambient-glow"></div>
+
+  <!-- Header -->
+  <header class="top-nav">
+    <div class="brand">
+      <div class="brand-logo">RT</div>
+      <div>
+        <span class="brand-title">RiskTwin</span>
+        <span style="font-size: 12px; color: var(--text-muted); margin-left: 8px;">Pre-delinquency Early Warning & Restructuring Engine</span>
+      </div>
+      <div class="contest-badge">РЕСПУБЛИКАНСКИЙ КОНКУРС 2026 • АБРК / ГКБ</div>
+    </div>
+
+    <div class="nav-controls">
+      <div class="timer-pill" id="timerPill">
+        <div class="timer-dot"></div>
+        <span id="timerDisplay">06:00</span>
+      </div>
+      <button class="btn-action" onclick="toggleTimer()">⏱️ Старт/Пауза</button>
+      <button class="btn-action" onclick="toggleNotes()">📝 Спич (N)</button>
+      <button class="btn-action" onclick="toggleFullscreen()">⛶ Полный экран (F)</button>
+    </div>
+  </header>
+
+  <!-- Slider Viewport -->
+  <main class="slider-viewport">
+    <div class="slide-container">
+
+      <!-- SLIDE 1: Title -->
+      <section class="slide active" data-index="1">
+        <div class="slide-header">
+          <div class="slide-tag"><span>🚀</span> ТРЕК: AI FOR FINANCE & REGTECH</div>
+          <h1 class="slide-title" style="font-size: 42px;">RiskTwin: Цифровой двойник кредитного риска</h1>
+          <p class="slide-subtitle" style="font-size: 18px;">Превентивное раннее предупреждение дефолта за 30–60 дней и оптимизация реструктуризации на основе глубокого обучения и исследования операций</p>
+        </div>
+        <div class="slide-content">
+          <div class="grid-3" style="align-items: stretch;">
+            <div class="card card-highlight">
+              <span class="badge badge-cyan">ИННОВАЦИЯ ИИ</span>
+              <div class="stat-huge" style="font-size: 32px; margin-top: 14px;">Cross-Attention</div>
+              <p class="card-p">Двухбашенная нейросеть (PyTorch) синтезирует потоки банковских транзакций и психометрическую телеметрию ДБО в единое пространство риска.</p>
+            </div>
+            <div class="card card-highlight">
+              <span class="badge badge-emerald">МАТЕМАТИЧЕСКОЕ ЯДРО</span>
+              <div class="stat-huge" style="font-size: 32px; margin-top: 14px;">Google OR-Tools</div>
+              <p class="card-p">MILP-солвер дискретной оптимизации за 12 мс рассчитывает 3 персонализированных сценария оздоровления, максимизируя NPV возвратности банка.</p>
+            </div>
+            <div class="card card-highlight">
+              <span class="badge badge-amber">РЕГУЛЯТОРНАЯ ЧИСТОТА</span>
+              <div class="stat-huge" style="font-size: 32px; margin-top: 14px;">АРРФР & ГКБ</div>
+              <p class="card-p">100% соблюдение нормативов КДН ≤ 50%, требований МСФО 9 и поддержка экосистемы Open Banking Национального Банка РК.</p>
+            </div>
+          </div>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 14px;">
+          <div style="font-size: 13px; color: var(--text-muted);">
+            Организаторы: <b style="color: #fff;">АБРК • ГКБ • КБТУ • NU</b> | Партнеры: <b style="color: #fff;">Bereke Bank • Mastercard • ISSAI</b>
+          </div>
+          <div class="badge badge-cyan">TRL 6–7 (Working Prototype)</div>
+        </div>
+      </section>
+
+      <!-- SLIDE 2: Problem & Context -->
+      <section class="slide" data-index="2" style="background: linear-gradient(rgba(10, 14, 23, 0.90), rgba(10, 14, 23, 0.95)), url('../src/presentation-generator/assets/slide2_blurred_bg.jpg') center/cover no-repeat;">
+        <div class="slide-header">
+          <div class="slide-tag"><span>⚠️</span> ВВЕДЕНИЕ • РЕГУЛЯТОРНЫЙ И РЫНОЧНЫЙ КОНТЕКСТ РК 2026</div>
+          <h2 class="slide-title">Кризис проблемных долгов и реформа АРРФР: почему банкам необходим ИИ</h2>
+          <p class="slide-subtitle">Рост NPL 90+ до ₸1,6 трлн (+481 млрд тг за год), запрет на господдержку из бюджета и надобность ранней ИИ-превенции</p>
+        </div>
+        <div class="slide-content">
+          <div class="grid-3" style="margin-bottom: 14px;">
+            <div class="card" style="border-left: 3px solid var(--accent-rose); background: rgba(244, 63, 94, 0.06);">
+              <span class="badge badge-rose">NPL 90+ РЕКОРД</span>
+              <div class="stat-huge" style="font-size: 28px; margin-top: 8px; color: var(--accent-rose);">₸ 1,575 трлн</div>
+              <p class="card-p" style="font-size: 12px; line-height: 1.4;">Рост неработающих займов на <b>+481 млрд тг</b> за год. Доля NPL выросла до <b>3,63%</b> при ссудном портфеле <b>₸43,5 трлн</b> (+21,2%).</p>
+            </div>
+            <div class="card" style="border-left: 3px solid var(--accent-amber); background: rgba(245, 158, 11, 0.06);">
+              <span class="badge badge-amber">РЕФОРМА АРРФР</span>
+              <div class="stat-huge" style="font-size: 28px; margin-top: 8px; color: var(--accent-amber);">0 ₸ из бюджета</div>
+              <p class="card-p" style="font-size: 12px; line-height: 1.4;">Закон о банках 2026: государство больше <b>не спасает банки за счет Нацфонда</b>. Убытки несут только акционеры (буфер TLAC 13%➔18%).</p>
+            </div>
+            <div class="card" style="border-left: 3px solid var(--accent-emerald); background: rgba(16, 185, 129, 0.06);">
+              <span class="badge badge-emerald">ВЫХОД ДЛЯ СЕКТОРА</span>
+              <div class="stat-huge" style="font-size: 28px; margin-top: 8px; color: var(--accent-emerald);">ИИ-превенция</div>
+              <p class="card-p" style="font-size: 12px; line-height: 1.4;">Единственная защита капитала: предиктивное выявление риска за <b>30–60 дней до DPD</b> и автоматическая реструктуризация по нормам АРРФР.</p>
+            </div>
+          </div>
+
+          <div class="grid-3">
+            <div class="card">
+              <div class="card-title" style="font-size: 13.5px;"><span style="color: var(--accent-rose);">01.</span> Всплеск NPL у гигантов сектора</div>
+              <p class="card-p" style="font-size: 12px; line-height: 1.5;">
+                • <b>Halyk Bank:</b> +233 млрд тг (до 503,5 млрд / +46% NPL).<br>
+                • <b>Kaspi Bank:</b> +150 млрд тг (до 442 млрд, доля 5,48%).<br>
+                • <b>Forte (+49 млрд), Bereke (+25 млрд</b>, NPL 6,93%), <b>RBK (+17,5 млрд)</b>.<br>
+                • <i>Исключение:</i> Евразийский банк снизил NPL на 48 млрд тг (доля упала с 8,3% до 3,7%).
+              </p>
+            </div>
+            <div class="card">
+              <div class="card-title" style="font-size: 13.5px;"><span style="color: var(--accent-amber);">02.</span> Убытки платят акционеры (TLAC)</div>
+              <p class="card-p" style="font-size: 12px; line-height: 1.5;">
+                • Новый закон «О банках»: <b>полный запрет</b> бюджетного спасения.<br>
+                • <b>Норматив TLAC:</b> резерв капитала 13% с ростом до 18% к 2032 г.<br>
+                • <b>Ранний надзор АРРФР:</b> вмешательство регулятора ДО неплатежеспособности и принудительное требование восстановления ликвидности.<br>
+                • Гарантированные депозиты граждан сохранены в полном объеме.
+              </p>
+            </div>
+            <div class="card" style="border: 1px solid rgba(16, 185, 129, 0.4); background: rgba(16, 185, 129, 0.05);">
+              <div class="card-title" style="font-size: 13.5px; color: var(--accent-emerald);"><span style="color: var(--accent-emerald);">03.</span> Надобность ИИ-решения (RiskTwin)</div>
+              <p class="card-p" style="font-size: 12px; line-height: 1.5;">
+                • <b>Слепая зона 90+:</b> классический скоринг видит дефолт постфактум, замораживая до 100% резервов по МСФО 9.<br>
+                • <b>Нейросеть Cross-Attention:</b> находит скрытый кассовый разрыв за 30–60 дней по телеметрии ДБО (ROC-AUC 0.941).<br>
+                • <b>MILP-оптимизатор:</b> за 12 мс синтезирует план урегулирования по лимитам АРРФР (КДН ≤ 50%), спасая капитал акционеров.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 3: Solution Concept -->
+      <section class="slide" data-index="3">
+        <div class="slide-header">
+          <div class="slide-tag"><span>💡</span> РЕШЕНИЕ RISKTWIN</div>
+          <h2 class="slide-title">От реактивного коллекшна к превентивному спасению капитала</h2>
+          <p class="slide-subtitle">Цифровой двойник кредитного риска: Ранний диагноз + Регуляторное лечение</p>
+        </div>
+        <div class="slide-content">
+          <div class="grid-3">
+            <div class="card">
+              <div class="badge badge-cyan">ШАГ 1: МОНИТОРИНГ</div>
+              <div class="card-title" style="margin-top: 14px;">Потоковая телеметрия</div>
+              <p class="card-p">Сбор потока обезличенных транзакций и метрик приложения ДБО через Redis Streams без нарушения банковской тайны.</p>
+              <div style="margin-top: 16px; font-size: 12px; color: var(--accent-cyan); font-family: 'Fira Code', monospace;">
+                ➔ Энтропия P2P-потоков<br>
+                ➔ Зависания в графике платежей<br>
+                ➔ Падение финансовой подушки
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="badge badge-purple" style="background: rgba(139,92,246,0.15); color: var(--accent-purple); border: 1px solid rgba(139,92,246,0.3);">ШАГ 2: НЕЙРОСЕТЬ</div>
+              <div class="card-title" style="margin-top: 14px;">Cross-Attention ИИ</div>
+              <p class="card-p">Оценка вероятности дефолта $P(def)$ и точный прогноз времени до кассового разрыва (Survival Analysis: $\pm4$ дня).</p>
+              <div style="margin-top: 16px; font-size: 12px; color: var(--accent-purple); font-family: 'Fira Code', monospace;">
+                ➔ Dual-Tower Architecture<br>
+                ➔ FT-Transformer Embeddings<br>
+                ➔ XAI матрица объяснений
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="badge badge-emerald">ШАГ 3: ОПТИМИЗАЦИЯ</div>
+              <div class="card-title" style="margin-top: 14px;">OR-Tools Prescriptive</div>
+              <p class="card-p">Мгновенный подбор регуляторно выверенных сценариев (пролонгация / каникулы), максимизирующих NPV банка.</p>
+              <div style="margin-top: 16px; font-size: 12px; color: var(--accent-emerald); font-family: 'Fira Code', monospace;">
+                ➔ Солвер SCIP (12 мс)<br>
+                ➔ КДН ≤ 50% (АРРФР лимит)<br>
+                ➔ Пуш-оффер в 1 клик клиенту
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 4: AI Architecture -->
+      <section class="slide" data-index="4">
+        <div class="slide-header">
+          <div class="slide-tag"><span>🧠</span> DEEP LEARNING ARCHITECTURE</div>
+          <h2 class="slide-title">Dual-Tower Cross-Attention Network (PyTorch)</h2>
+          <p class="slide-subtitle">Синтез разнородных модальностей: Финансовые потоки × Психометрия ДБО</p>
+        </div>
+        <div class="slide-content">
+          <div style="display: flex; flex-direction: column; gap: 16px; width: 100%;">
+            <div class="arch-flow">
+              <div class="arch-node">
+                <div class="arch-node-title">Финансовая башня (7 фичей)</div>
+                <div class="arch-node-desc">Зарплатный тренд, DTI, сальдо, P2P, МФО</div>
+                <div class="badge badge-cyan" style="margin-top: 6px;">FT-Tokenizer [B, 7, 32]</div>
+              </div>
+              <div class="arch-arrow">➔</div>
+              <div class="arch-node" style="border-color: rgba(6, 182, 212, 0.4); background: rgba(6, 182, 212, 0.08);">
+                <div class="arch-node-title">Query: Финансы</div>
+                <div class="arch-node-desc">Multi-Head Cross-Attention (4 головы)</div>
+                <div class="badge badge-cyan" style="margin-top: 6px;">Внимание: [7 × 9] матрица</div>
+              </div>
+              <div class="arch-arrow">➔</div>
+              <div class="arch-node" style="border-color: rgba(16, 185, 129, 0.4); background: rgba(16, 185, 129, 0.08);">
+                <div class="arch-node-title">Multi-Task Head</div>
+                <div class="arch-node-desc">1. P(Default 30d) [BCE Loss]<br>2. Survival Days [Huber Loss]</div>
+                <div class="badge badge-emerald" style="margin-top: 6px;">Выход инференса</div>
+              </div>
+              <div class="arch-arrow">◀</div>
+              <div class="arch-node">
+                <div class="arch-node-title">Психо-башня (9 фичей)</div>
+                <div class="arch-node-desc">Ночные сессии, зависания, аптеки, стресс</div>
+                <div class="badge badge-purple" style="margin-top: 6px;">FT-Tokenizer [B, 9, 32] (Key/Value)</div>
+              </div>
+            </div>
+
+            <div class="grid-2" style="margin-top: 6px;">
+              <div class="card">
+                <div class="card-title">Почему не стандартный XGBoost / CatBoost?</div>
+                <p class="card-p">Табличный бустинг сваливает все признаки в одну кучу, упуская динамическую кросс-модальную модуляцию. Cross-Attention точно определяет: <i>является ли ночной вход в ДБО индикатором тревоги по кредиту или безобидной проверкой баланса</i>, сопоставляя его с финансовым сальдо.</p>
+              </div>
+              <div class="card">
+                <div class="card-title">Multi-Task Learning (MTL) Loss</div>
+                <p class="card-p" style="font-family: 'Fira Code', monospace; font-size: 13px; color: var(--accent-cyan);">
+                  Loss = BCE(P_pred, y_default) + 0.02 * Huber(Days_pred, Days_true)
+                </p>
+                <p class="card-p" style="margin-top: 8px;">Одновременное обучение предотвращает переобучение и связывает риск с точным временным горизонтом дефолта.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 5: 16 Early Warning Factors -->
+      <section class="slide" data-index="5">
+        <div class="slide-header">
+          <div class="slide-tag"><span>📊</span> ФАКТОРНОЕ ПРОСТРАНСТВО</div>
+          <h2 class="slide-title">16 маркеров скрытого финансового и психоэмоционального стресса</h2>
+          <p class="slide-subtitle">Данные, которые уже есть у каждого казахстанского банка в защищенном периметре</p>
+        </div>
+        <div class="slide-content">
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-title" style="color: var(--accent-cyan);">Башня 1: Финансовые маркеры (7 факторов)</div>
+              <table class="table-modern">
+                <thead>
+                  <tr><th>Фактор</th><th>Бизнес-смысл</th><th>Триггер</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><code>Salary Trend (3m/6m)</code></td><td>Динамика зарплаты к норме</td><td><span class="badge badge-rose">&lt; 0.85</span></td></tr>
+                  <tr><td><code>Salary Inflow Delay</code></td><td>Задержка аванса/зарплаты (дни)</td><td><span class="badge badge-amber">&gt; 5 дней</span></td></tr>
+                  <tr><td><code>MFO/Gambling Tag</code></td><td>Транзакции в МФО / гемблинг</td><td><span class="badge badge-rose">True</span></td></tr>
+                  <tr><td><code>DTI Dynamic</code></td><td>Текущая нагрузка платежами</td><td><span class="badge badge-amber">&gt; 45%</span></td></tr>
+                  <tr><td><code>Median Balance 7d</code></td><td>Оперативный остаток на карте</td><td><span class="badge badge-rose">&lt; ₸10 000</span></td></tr>
+                  <tr><td><code>Net Cashflow Margin</code></td><td>Чистый свободный денежный поток</td><td><span class="badge badge-rose">&lt; 0</span></td></tr>
+                  <tr><td><code>Declared Income</code></td><td>Подтвержденный доход</td><td>База</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="card">
+              <div class="card-title" style="color: var(--accent-purple);">Башня 2: Телеметрия и поведение (9 факторов)</div>
+              <table class="table-modern">
+                <thead>
+                  <tr><th>Фактор</th><th>Психометрический маркер</th><th>Сигнал</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><code>Night DBO Logins</code></td><td>Входы в приложение с 01:00 до 05:00</td><td>Всплеск</td></tr>
+                  <tr><td><code>Schedule Dwell Time</code></td><td>Зависание на экране платежа (сек)</td><td>&gt; 25 сек</td></tr>
+                  <tr><td><code>Balance Check Anxiety</code></td><td>Аномальная частота проверки карты</td><td>Индекс &gt; 0.7</td></tr>
+                  <tr><td><code>Pharmacy Stress Share</code></td><td>Рост расходов на седативные/аптеки</td><td>Тренд ↑</td></tr>
+                  <tr><td><code>Self-Care Drop Rate</code></td><td>Отказ от спортзалов, ухода, хобби</td><td>Спад &gt; 60%</td></tr>
+                  <tr><td><code>Sleep Disruption Orders</code></td><td>Спонтанные ночные покупки</td><td>Маркер</td></tr>
+                  <tr><td><code>Night Alcohol Spend</code></td><td>Ночные чеки в барах / алкомаркетах</td><td>Стресс-паттерн</td></tr>
+                  <tr><td><code>Alimony Burden Ratio</code></td><td>Отягощающие семейные обязательства</td><td>Коэффициент</td></tr>
+                  <tr><td><code>Age Cohort</code></td><td>Возрастная устойчивость заемщика</td><td>Категория</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 6: Explainable AI & Regulation -->
+      <section class="slide" data-index="6">
+        <div class="slide-header">
+          <div class="slide-tag"><span>🔍</span> EXPLAINABLE AI & TRUST</div>
+          <h2 class="slide-title">Доверие регулятора: «Белый ящик» вместо слепого алгоритма</h2>
+          <p class="slide-subtitle">Прозрачность решений для АРРФР, кредитного комитета и внутреннего аудита банка</p>
+        </div>
+        <div class="slide-content">
+          <div class="grid-2">
+            <div class="card card-highlight">
+              <div class="card-title">Матрица Cross-Attention как источник XAI</div>
+              <p class="card-p">Вместо медленного и приближенного SHAP, архитектура RiskTwin извлекает точные веса внимания непосредственно из слоя Multi-Head Attention:</p>
+              <div style="margin: 14px 0; padding: 12px; background: rgba(0,0,0,0.3); border-radius: 8px; font-family: 'Fira Code', monospace; font-size: 13px; color: var(--accent-cyan);">
+                A[i, j] = Softmax( Q_i * K_j^T / sqrt(d) )
+              </div>
+              <p class="card-p">Каждое срабатывание риск-триггера сопровождается списком ключевых драйверов с переводом на понятный человеку язык (Human-readable explanation).</p>
+            </div>
+
+            <div class="card">
+              <div class="card-title">Пример карточки объяснения для Кредитного Комитета</div>
+              <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 10px;">
+                <div style="padding: 10px 12px; background: rgba(244,63,94,0.08); border-left: 3px solid var(--accent-rose); border-radius: 4px;">
+                  <b style="color: #fff; font-size: 13px;">Фактор 1 (Вес: 42%): Задержка заработной платы +12 дней</b>
+                  <p style="font-size: 12px; color: var(--text-muted);">Входящий зарплатный поток задержан работодателем; кассовый разрыв до даты аннуитета.</p>
+                </div>
+                <div style="padding: 10px 12px; background: rgba(245,158,11,0.08); border-left: 3px solid var(--accent-amber); border-radius: 4px;">
+                  <b style="color: #fff; font-size: 13px;">Фактор 2 (Вес: 31%): Ночная тревожность в ДБО</b>
+                  <p style="font-size: 12px; color: var(--text-muted);">4 ночные сессии за 3 дня с зависанием на экране графика кредита более 38 секунд.</p>
+                </div>
+                <div style="padding: 10px 12px; background: rgba(6,182,212,0.08); border-left: 3px solid var(--accent-cyan); border-radius: 4px;">
+                  <b style="color: #fff; font-size: 13px;">Фактор 3 (Вес: 18%): Вход в микрокредитный шлюз</b>
+                  <p style="font-size: 12px; color: var(--text-muted);">Попытка закрыть текущую нехватку ликвидности микрозаймом под высокий процент.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 7: Operations Research Optimization -->
+      <section class="slide" data-index="7">
+        <div class="slide-header">
+          <div class="slide-tag"><span>⚡</span> PRESCRIPTIVE AI: OR-TOOLS</div>
+          <h2 class="slide-title">Математический синтез оптимальной реструктуризации</h2>
+          <p class="slide-subtitle">Смешанно-целочисленное линейное программирование (MILP) на солвере SCIP за 12 миллисекунд</p>
+        </div>
+        <div class="slide-content">
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-title">Целевая функция максимизации чистой стоимости (NPV)</div>
+              <div style="padding: 12px; background: rgba(0,0,0,0.3); border-radius: 8px; font-family: 'Fira Code', monospace; font-size: 12px; color: var(--accent-emerald); line-height: 1.5;">
+                max NPV = Σ [ CF_m / (1 + r_wacc)^m ] * (1 - P_def(load)) - LGD * P_def * Balance
+              </div>
+              <div style="margin-top: 14px;">
+                <b style="color: #fff; font-size: 13px;">Жесткие регуляторные ограничения (Constraints):</b>
+                <ul style="list-style: disc; margin-left: 20px; font-size: 13px; color: var(--text-muted); margin-top: 6px; display: flex; flex-direction: column; gap: 4px;">
+                  <li><b>Лимит АРРФР:</b> Платеж ≤ 50% от подтвержденного дохода (КДН ≤ 0.50).</li>
+                  <li><b>Бюджет клиента:</b> Новый платеж строго меньше свободного остатка (Free Cashflow).</li>
+                  <li><b>Срок пролонгации:</b> Не более +24 месяцев к действующему договору.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="card card-highlight">
+              <div class="card-title">3 сценария, синтезируемых для клиента</div>
+              <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 8px;">
+                <div style="padding: 10px 12px; background: rgba(255,255,255,0.03); border-radius: 8px;">
+                  <b style="color: var(--accent-cyan); font-size: 13px;">1. Сценарий «Пролонгация срока»</b>
+                  <p style="font-size: 12px; color: var(--text-muted);">Увеличение срока на 12–18 мес. Снижение платежа на 35%. Клиент восстанавливает комфортный ритм жизни.</p>
+                </div>
+                <div style="padding: 10px 12px; background: rgba(255,255,255,0.03); border-radius: 8px;">
+                  <b style="color: var(--accent-purple); font-size: 13px;">2. Сценарий «Кредитные каникулы»</b>
+                  <p style="font-size: 12px; color: var(--text-muted);">Пауза по платежам на 2–3 месяца при подтвержденном временном шоке (смена работы / больничный).</p>
+                </div>
+                <div style="padding: 10px 12px; background: rgba(255,255,255,0.03); border-radius: 8px;">
+                  <b style="color: var(--accent-emerald); font-size: 13px;">3. Сценарий «Грейс по основному долгу»</b>
+                  <p style="font-size: 12px; color: var(--text-muted);">Выплата только процентов в течение 3–6 месяцев. Минимальная финансовая нагрузка для заемщика.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 8: Platform Demo & Agent World -->
+      <section class="slide" data-index="8">
+        <div class="slide-header">
+          <div class="slide-tag"><span>💻</span> ДЕЙСТВУЮЩИЙ ПРОТОТИП (TRL 6–7)</div>
+          <h2 class="slide-title">Комплексная программная платформа RiskTwin</h2>
+          <p class="slide-subtitle">Живой стек: .NET 8 Clean Architecture, PyTorch gRPC, Next.js 15, Multi-Agent World</p>
+        </div>
+        <div class="slide-content">
+          <div class="grid-3">
+            <div class="card">
+              <div class="badge badge-cyan">ДАШБОРД РИСК-ОФИЦЕРА</div>
+              <div class="card-title" style="margin-top: 10px;">Портфельный надзор</div>
+              <p class="card-p">Сквозная визуализация розничного портфеля с ранжированием по $P(Default)$, дате риска и превентивным мерам. Сортировка по когортам уязвимости.</p>
+            </div>
+            <div class="card">
+              <div class="badge badge-purple" style="background: rgba(139,92,246,0.15); color: var(--accent-purple); border: 1px solid rgba(139,92,246,0.3);">МУЛЬТИАГЕНТНЫЙ МИР</div>
+              <div class="card-title" style="margin-top: 10px;">Agent World Simulator</div>
+              <p class="card-p">10 автономных агентов-двойников казахстанцев (IT-специалист, курьер, маркетолог, строитель) в реальном времени реагируют на финансовые шоки.</p>
+            </div>
+            <div class="card">
+              <div class="badge badge-emerald">МОБИЛЬНЫЙ БАНКИНГ</div>
+              <div class="card-title" style="margin-top: 10px;">Клиентский портал</div>
+              <p class="card-p">Интуитивный экран мобильного банка: клиент видит заботливое предложение оптимизации графика и подписывает соглашение в 1 клик через ЭЦП.</p>
+            </div>
+          </div>
+        </div>
+        <div style="padding: 12px 20px; background: rgba(0,0,0,0.4); border-radius: 10px; border: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; align-items: center;">
+          <span style="font-size: 13px; color: var(--text-muted);">⚡ <b>Технологический контур:</b> gRPC Proto API • Redis Streams • Next.js 15 Tailwind • Docker Compose</span>
+          <span class="badge badge-emerald">Live Demo Готово к показу на Q&A</span>
+        </div>
+      </section>
+
+      <!-- SLIDE 9: Metrics & Experiments -->
+      <section class="slide" data-index="9">
+        <div class="slide-header">
+          <div class="slide-tag"><span>📈</span> ЭКСПЕРИМЕНТАЛЬНЫЕ РЕЗУЛЬТАТЫ</div>
+          <h2 class="slide-title">Метрики качества: Превосходство над традиционными скорингами</h2>
+          <p class="slide-subtitle">Валидация на выборке 25 000 синтетических профилей заемщиков РК</p>
+        </div>
+        <div class="slide-content">
+          <div class="grid-4">
+            <div class="card card-highlight">
+              <div class="stat-label">Качество классификации</div>
+              <div class="stat-huge">0.941</div>
+              <p class="card-p"><b>Test ROC-AUC</b> (у традиционного бюро-скоринга: 0.72–0.78)</p>
+            </div>
+            <div class="card card-highlight">
+              <div class="stat-label">Точность окна дефолта</div>
+              <div class="stat-huge">±4.2 дн</div>
+              <p class="card-p"><b>MAE Survival Analysis</b> (ошибка срока до первой просрочки)</p>
+            </div>
+            <div class="card card-highlight">
+              <div class="stat-label">Время работы солвера</div>
+              <div class="stat-huge">14.8 мс</div>
+              <p class="card-p"><b>OR-Tools MILP</b> (синтез 3 сценариев на обычном CPU)</p>
+            </div>
+            <div class="card card-highlight">
+              <div class="stat-label">Precision / Recall</div>
+              <div class="stat-huge">88% / 89%</div>
+              <p class="card-p"><b>F1-score: 0.885</b> по выявлению скрытого преддефолта</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 10: Financial & Business Impact -->
+      <section class="slide" data-index="10">
+        <div class="slide-header">
+          <div class="slide-tag"><span>💰</span> ЭКОНОМИЧЕСКИЙ ЭФФЕКТ ДЛЯ БАНКОВ РК</div>
+          <h2 class="slide-title">+1.4 млрд тенге экономии на каждые 100 000 заемщиков</h2>
+          <p class="slide-subtitle">Экономика внедрения для розничного БВУ среднего масштаба в Казахстане</p>
+        </div>
+        <div class="slide-content">
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-title">Финансовая модель эффекта (Портфель: 100 000 займов)</div>
+              <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; margin-top: 10px;">
+                <li style="display: flex; justify-content: space-between; font-size: 13.5px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 6px;">
+                  <span style="color: var(--text-muted);">Размер портфеля кредитов:</span>
+                  <b>120 млрд KZT</b>
+                </li>
+                <li style="display: flex; justify-content: space-between; font-size: 13.5px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 6px;">
+                  <span style="color: var(--text-muted);">Базовый уровень NPL 90+ в год:</span>
+                  <b style="color: var(--accent-rose);">5.0% (~5 000 клиентов)</b>
+                </li>
+                <li style="display: flex; justify-content: space-between; font-size: 13.5px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 6px;">
+                  <span style="color: var(--text-muted);">Перехвачено и оздоровлено RiskTwin:</span>
+                  <b style="color: var(--accent-emerald);">48% (~2 400 заемщиков)</b>
+                </li>
+                <li style="display: flex; justify-content: space-between; font-size: 13.5px; padding-top: 4px;">
+                  <span style="color: #fff; font-weight: 600;">Предотвращенные потери капитала:</span>
+                  <b style="color: var(--accent-cyan); font-size: 16px;">+₸1.42 млрд KZT / год</b>
+                </li>
+              </ul>
+            </div>
+
+            <div class="card">
+              <div class="card-title">Комплексная польза для финансовой системы</div>
+              <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 8px;">
+                <div style="padding: 10px 12px; background: rgba(16,185,129,0.06); border-radius: 6px;">
+                  <b style="color: var(--accent-emerald); font-size: 13px;">✓ Разгрузка провизий по МСФО 9</b>
+                  <p style="font-size: 12px; color: var(--text-muted);">Кредит не переходит в Stage 3, высвобождая капитал банка для активных кредитных операций.</p>
+                </div>
+                <div style="padding: 10px 12px; background: rgba(6,182,212,0.06); border-radius: 6px;">
+                  <b style="color: var(--accent-cyan); font-size: 13px;">✓ Экономия на коллекшне (-35%)</b>
+                  <p style="font-size: 12px; color: var(--text-muted);">Снижение затрат на колл-центры, выездных специалистов, нотариусов и суды.</p>
+                </div>
+                <div style="padding: 10px 12px; background: rgba(139,92,246,0.06); border-radius: 6px;">
+                  <b style="color: var(--accent-purple); font-size: 13px;">✓ Социальное здоровье населения</b>
+                  <p style="font-size: 12px; color: var(--text-muted);">Снижение закредитованности, защита граждан от попадания в черный список и кабалу МФО.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 11: Roadmap & Integration -->
+      <section class="slide" data-index="11">
+        <div class="slide-header">
+          <div class="slide-tag"><span>🗺️</span> ДОРОЖНАЯ КАРТА И TRL</div>
+          <h2 class="slide-title">План масштабирования: От пилота к национальному стандарту</h2>
+          <p class="slide-subtitle">Интеграция с АБРК, ГКБ и экосистемой Open Banking Казахстана</p>
+        </div>
+        <div class="slide-content">
+          <div class="grid-4">
+            <div class="card" style="border-top: 3px solid var(--accent-cyan);">
+              <span class="badge badge-cyan">ЭТАП 1 (1–3 МЕС)</span>
+              <div class="card-title" style="margin-top: 10px;">Пилот в Sandbox</div>
+              <p class="card-p">Развертывание в регуляторной песочнице банка-партнера (Bereke Bank / ГКБ). Калибровка весов на обезличенной истории 50K клиентов.</p>
+            </div>
+            <div class="card" style="border-top: 3px solid var(--accent-blue);">
+              <span class="badge badge-cyan">ЭТАП 2 (4–6 МЕС)</span>
+              <div class="card-title" style="margin-top: 10px;">Open Banking API</div>
+              <p class="card-p">Интеграция с межбанковской шиной открытых API Нацбанка РК для обогащения профилей мультибанкинга (cross-bank BNPL).</p>
+            </div>
+            <div class="card" style="border-top: 3px solid var(--accent-purple);">
+              <span class="badge badge-purple" style="background: rgba(139,92,246,0.15); color: var(--accent-purple);">ЭТАП 3 (7–9 МЕС)</span>
+              <div class="card-title" style="margin-top: 10px;">A/B Тестирование</div>
+              <p class="card-p">Запуск в промышленном ДБО: сравнение метрик возвратности контрольной группы (обычный коллекшн) и тестовой группы RiskTwin.</p>
+            </div>
+            <div class="card" style="border-top: 3px solid var(--accent-emerald);">
+              <span class="badge badge-emerald">ЭТАП 4 (10–12 МЕС)</span>
+              <div class="card-title" style="margin-top: 10px;">Шлюз ГКБ (TRL 8–9)</div>
+              <p class="card-p">Создание единого межотраслевого сервиса раннего кредитного мониторинга под эгидой Ассоциации Банков РК.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 12: Team & Conclusion -->
+      <section class="slide" data-index="12">
+        <div class="slide-header">
+          <div class="slide-tag"><span>👥</span> КОМАНДА И ФИНАЛ</div>
+          <h2 class="slide-title">RiskTwin — Технологии на страже финансовой устойчивости РК</h2>
+          <p class="slide-subtitle">Готовность к защите в финале в Алматы (КБТУ) и Астане (Назарбаев Университет)</p>
+        </div>
+        <div class="slide-content">
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-title">Команда проекта</div>
+              <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 10px;">
+                <div style="padding: 10px 14px; background: rgba(255,255,255,0.03); border-radius: 8px;">
+                  <b style="color: #fff; font-size: 14px;">ML & Optimization Engineer</b>
+                  <p style="font-size: 12.5px; color: var(--text-muted);">Разработка Cross-Attention архитектуры PyTorch, FT-Transformer, XAI движка и математического солвера OR-Tools MILP.</p>
+                </div>
+                <div style="padding: 10px 14px; background: rgba(255,255,255,0.03); border-radius: 8px;">
+                  <b style="color: #fff; font-size: 14px;">System Architect & Backend Engineer</b>
+                  <p style="font-size: 12.5px; color: var(--text-muted);">Clean Architecture на .NET 8 WebApi, gRPC Protocol Buffers, потоковая шина Redis Streams, Next.js 15 UI.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="card card-highlight">
+              <div class="card-title">Почему RiskTwin достоин победы?</div>
+              <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px; margin-top: 10px;">
+                <li style="display: flex; gap: 10px; font-size: 13.5px; color: #fff;">
+                  <span style="color: var(--accent-emerald);">✔</span> <b>100% решение задач конкурса:</b> Фокус на ИИ, финтехе и защите от финансовых шоков.
+                </li>
+                <li style="display: flex; gap: 10px; font-size: 13.5px; color: #fff;">
+                  <span style="color: var(--accent-emerald);">✔</span> <b>Работающий код (TRL 6–7):</b> Не концепт, а протестированная система с готовым репозиторием.
+                </li>
+                <li style="display: flex; gap: 10px; font-size: 13.5px; color: #fff;">
+                  <span style="color: var(--accent-emerald);">✔</span> <b>Огромная экономическая польза:</b> Миллиардный эффект для БВУ и социальная польза для граждан РК.
+                </li>
+              </ul>
+              <div style="margin-top: 20px; text-align: center;">
+                <span class="badge badge-cyan" style="font-size: 13px; padding: 8px 16px;">Спасибо за внимание! Готовы к вашим вопросам!</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Speaker Notes Panel -->
+  <div class="notes-panel" id="notesPanel">
+    <div class="notes-header">
+      <span class="notes-title" id="notesSlideIndicator">Спич докладчика (Слайд 1 • Тайминг 0:00 - 0:30)</span>
+      <button class="btn-action" onclick="toggleNotes()">✕ Закрыть (N)</button>
+    </div>
+    <p class="notes-text" id="notesContent">Загрузка подсказок...</p>
+  </div>
+
+  <!-- Bottom Navigation Bar -->
+  <footer class="bottom-bar">
+    <div class="progress-track" id="progressBar" style="width: 8.33%;"></div>
+    
+    <div class="slide-indexer">
+      Слайд <span id="currentSlideNum">1</span> / <span id="totalSlidesNum">12</span>
+    </div>
+
+    <div class="shortcuts-hint">
+      <span>Навигация: <span class="key">←</span> <span class="key">→</span> или <span class="key">Пробел</span></span>
+      <span>Спикер-ноты: <span class="key">N</span></span>
+      <span>Полный экран: <span class="key">F</span></span>
+    </div>
+
+    <div style="display: flex; gap: 8px;">
+      <button class="btn-action" onclick="prevSlide()">◀ Назад</button>
+      <button class="btn-action" onclick="nextSlide()">Вперед ▶</button>
+    </div>
+  </footer>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+    let currentSlide = 0;
+
+    const speeches = [
+      /* Slide 1 */
+      "Здравствуйте, уважаемые члены жюри, представители Ассоциации Банков Казахстана, Национального Банка, ГКБ и партнеры! Мы представляем проект RiskTwin. Сегодня банки Казахстана обладают колоссальными объемами транзакций и данных мобильных приложений, но продолжают терять миллиарды тенге, потому что начинают спасать проблемный кредит только тогда, когда заемщик уже допустил первую просрочку. Наш проект меняет парадигму: мы создали Цифрового Двойника кредитного риска, который предсказывает финансовый стресс человека за 30–60 дней до неплатежа и за миллисекунды генерирует математически оптимальный, выгодный банку и клиенту план реструктуризации.",
+      
+      /* Slide 2 */
+      "Обратимся к официальной статистике регулятора на начало 2026 года. Ссудный портфель банков Казахстана вырос до рекордных 43,5 триллионов тенге, но одновременно мы наблюдаем опаснейший симптом: объем проблемных кредитов NPL 90+ взлетел за год сразу на 481 миллиард тенге и превысил 1,57 триллиона! По росту проблемных займов лидируют крупнейшие институты страны: Halyk Bank нарастил NPL более чем на 46%, прибавив 233 миллиарда, Kaspi Bank прибавил 150 миллиардов, рост наблюдается и в ForteBank, и в Bereke Bank. Но самое главное — с января 2026 года вступил в силу новый закон 'О банках и банковской деятельности'. Эпоха спасения банков за счет бюджета и Нацфонда окончательно закрыта! АРРФР закрепило нормативы TLAC: теперь первыми все убытки покрывают сами акционеры. Если банк по старинке ждет 90 дней просрочки — акционеры несут колоссальные невосполнимые потери и замораживают резервы по МСФО 9. Именно поэтому банковскому сектору Казахстана жизненно необходим искусственный интеллект: он позволяет выявить финансовый разрыв за 30–60 дней до просрочки и мгновенно провести превентивное оздоровление заемщика.",
+      
+      /* Slide 3 */
+      "RiskTwin — это комплексная платформа, объединяющая прогнозную аналитику и исследование операций. Мы строим динамический профиль каждого клиента. Если модель видит приближение кассового разрыва через 22 дня, она не блокирует карту и не пугает клиента коллектором. Вместо этого система за секунду просчитывает персонализированные варианты оздоровления — например, продление срока на 6 месяцев или снижение платежа на время спада дохода — и высылает пуш-уведомление в мобильный банкинг. Заемщик благодарен, банк сохраняет процентный доход и защищает капитал от списания в резервы.",
+      
+      /* Slide 4 */
+      "Как это устроено математически? Перед вами архитектура нашей глубокой двухбашенной нейросети на PyTorch. Мы применили передовой подход Feature Tokenizer из FT-Transformer. Башня 1 оцифровывает чистые финансовые показатели: тренд поступлений, энтропию переводов, остатки на счетах. Башня 2 анализирует поведенческую телеметрию ДБО. Но главное новшество — блок Cross-Attention: 4 головы внимания проецируют психологический стресс на финансовые маркеры. Например, если клиент в 3 часа ночи многократно открывает экран графика кредита, кросс-внимание подсвечивает уязвимость именно в статьях обязательных расходов. Кроме того, это Multi-Task Learning сеть: мы обучаем модель одновременно классифицировать дефолт и предсказывать точное количество дней до него с помощью Huber Loss.",
+      
+      /* Slide 5 */
+      "На слайде представлены 16 признаков, используемых моделью. Обратите внимание: мы не вторгаемся в частную переписку или конфиденциальную тайну. Все эти данные уже есть у любого современного казахстанского банка внутри его мобильного приложения и карточного процессинга! Человек, испытывающий скрытый финансовый кризис, ведет себя по строго определенным законам: он перестает тратить на спортзал и стрижки, у него растет частота ночных входов в банковское приложение, он по 30 секунд смотрит на экран предстоящего платежа и начинает брать микрозаймы в МФО. Обученная модель с поразительной точностью видит переход клиента из зоны благополучия в зону преддефолтной тревоги.",
+      
+      /* Slide 6 */
+      "Одна из главных причин, почему банки боятся внедрять глубокие нейросети в риски — это регуляторные требования АРРФР. Модель обязана быть объяснимой. В RiskTwin мы создали модуль Explainable AI на основе весов матриц кросс-внимания. Для каждого заемщика формируется карточка с ключевыми драйверами риска на человеческом языке. Риск-офицер и внутренний аудит четко видят, какой именно фактор вызвал срабатывание триггера. Это полностью исключает дискриминацию и гарантирует прозрачность перед регулятором.",
+      
+      /* Slide 7 */
+      "Но диагностировать риск — это только полдела. Главная бизнес-ценность RiskTwin — это генерация решений. Мы называем это Prescriptive AI. В ядро системы встроен солвер смешанно-целочисленного линейного программирования SCIP в библиотеке Google OR-Tools. За 12 миллисекунд он решает задачу максимизации чистой приведенной стоимости кредита с учетом дисконтирования WACC и вероятности дефолта. Солвер гарантирует соблюдение нормативов АРРФР: платеж никогда не превысит 50% дохода заемщика. На выходе клиент получает 3 кристально понятных опции в приложении, а банк минимизирует списания в убыток.",
+      
+      /* Slide 8 */
+      "RiskTwin — это не теоретическая презентация. Это полностью работающий программный комплекс. У нас развернут бэкенд на .NET 8 Clean Architecture, ML-сервер на Python с gRPC, шина Redis Streams и реактивный веб-интерфейс на Next.js 15. В систему встроен модуль Agent World: 10 цифровых агентов с разными профессиями и доходами симулируют поведение реальных казахстанцев. В один клик мы можем устроить стресс-тест любому заемщику и увидеть, как математическое ядро пересчитывает риск и выдает готовое соглашение о реструктуризации.",
+      
+      /* Slide 9 */
+      "Перейдем к метрикам. Мы обучили и протестировали нашу модель на синтетическом датасете из 25 000 заемщиков, откалиброванном под реалии кредитного рынка Казахстана. Тестовый ROC-AUC составил 0.941! Это существенно превосходит традиционные скоринговые карты бюро кредитных историй, где ROC-AUC редко превышает 0.78. Средняя абсолютная ошибка времени наступления дефолта составила всего 4.2 дня. Это значит, что банк может предложить реструктуризацию ровно в тот момент, когда у человека закончились деньги, но он еще не испортил кредитную историю. А скорость солвера менее 15 миллисекунд позволяет встроить RiskTwin прямо в мобильное приложение банка под нагрузкой миллионов пользователей.",
+      
+      /* Slide 10 */
+      "Какова экономика решения? Возьмем модельный банк с портфелем в 100 тысяч потребительских кредитов. Ежегодно около 5 тысяч кредитов скатываются в невозвратные просрочки. Внедрение RiskTwin позволяет перехватить до половины этих заемщиков на ранней стадии. Банк предотвращает потери более чем на 1.4 миллиарда тенге за счет снижения списаний и высвобождения замороженного капитала из резервов МСФО 9. Затраты на коллекшн падают более чем на треть, а банк позиционирует себя как социально ответственный финансовый институт, заботящийся о финансовом здоровье своих клиентов.",
+      
+      /* Slide 11 */
+      "Проект полностью готов к пилотному внедрению. На текущем этапе TRL 6-7 у нас реализованы все ключевые модули и API-контракты. Наш план развития рассчитан на 12 месяцев. В партнерстве с Ассоциацией Банков Казахстана и Bereke Bank мы планируем провести пилот в регуляторной песочнице на исторических обезличенных данных. В дальнейшем решение может масштабироваться на базе Государственного Кредитного Бюро (ГКБ), формируя национальный индекс раннего кредитного стресса для всей финансовой системы Казахстана.",
+      
+      /* Slide 12 */
+      "Наша команда объединяет компетенции в глубоком машинном обучении, высоконагруженной распределенной архитектуре и финансовом моделировании. RiskTwin решает острейшую государственную задачу — защищает граждан Казахстана от долговой кабалы и укрепляет устойчивость финансовой системы страны. Мы готовы продемонстрировать живую работу системы на ноутбуке прямо сейчас в секции вопросов и ответов. Большое спасибо за внимание, мы с радостью ответим на ваши вопросы!"
+    ];
+
+    function updateSlide() {
+      slides.forEach((s, idx) => {
+        s.classList.toggle('active', idx === currentSlide);
+      });
+      document.getElementById('currentSlideNum').innerText = currentSlide + 1;
+      document.getElementById('progressBar').style.width = `${((currentSlide + 1) / totalSlides) * 100}%`;
+
+      // Update speaker notes
+      document.getElementById('notesSlideIndicator').innerText = `Спич докладчика (Слайд ${currentSlide + 1} • Тайминг ~${Math.floor(currentSlide * 0.5)}:${(currentSlide % 2) * 30 === 0 ? '00' : '30'})`;
+      document.getElementById('notesContent').innerText = speeches[currentSlide] || "Нет заметок";
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides - 1) {
+        currentSlide++;
+        updateSlide();
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 0) {
+        currentSlide--;
+        updateSlide();
+      }
+    }
+
+    function toggleNotes() {
+      const panel = document.getElementById('notesPanel');
+      panel.classList.toggle('visible');
+    }
+
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(() => {});
+      } else {
+        document.exitFullscreen().catch(() => {});
+      }
+    }
+
+    // Timer logic (6 minutes countdown)
+    let timeLeft = 360;
+    let timerRunning = false;
+    let timerInterval = null;
+
+    function formatTime(sec) {
+      const m = Math.floor(sec / 60);
+      const s = sec % 60;
+      return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+    }
+
+    function toggleTimer() {
+      const display = document.getElementById('timerDisplay');
+      if (timerRunning) {
+        clearInterval(timerInterval);
+        timerRunning = false;
+      } else {
+        timerRunning = true;
+        timerInterval = setInterval(() => {
+          if (timeLeft > 0) {
+            timeLeft--;
+            display.innerText = formatTime(timeLeft);
+            if (timeLeft <= 60) {
+              display.style.color = 'var(--accent-rose)';
+            }
+          } else {
+            clearInterval(timerInterval);
+            timerRunning = false;
+            display.innerText = "00:00 (СТОП)";
+          }
+        }, 1000);
+      }
+    }
+
+    // Keyboard events
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+        e.preventDefault();
+        nextSlide();
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        e.preventDefault();
+        prevSlide();
+      } else if (e.key.toLowerCase() === 'n') {
+        e.preventDefault();
+        toggleNotes();
+      } else if (e.key.toLowerCase() === 'f') {
+        e.preventDefault();
+        toggleFullscreen();
+      } else if (e.key.toLowerCase() === 't') {
+        e.preventDefault();
+        toggleTimer();
+      }
+    });
+
+    // Touch events
+    let touchStartX = 0;
+    window.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    });
+    window.addEventListener('touchend', (e) => {
+      const touchEndX = e.changedTouches[0].screenX;
+      if (touchStartX - touchEndX > 50) nextSlide();
+      if (touchEndX - touchStartX > 50) prevSlide();
+    });
+
+    // Init
+    updateSlide();
+  </script>
+</body>
+</html>

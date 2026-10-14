@@ -24,3 +24,5 @@ build/
 # Local env
 .env
 .env.local
+
+output/

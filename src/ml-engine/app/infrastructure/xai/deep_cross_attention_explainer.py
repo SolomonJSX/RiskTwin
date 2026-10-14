@@ -109,5 +109,6 @@ class DeepCrossAttentionExplainabilityEngine(IExplainabilityEngine):
         return {
             "financial_features": [FIN_HUMAN_NAMES.get(c, c) for c in details["fin_cols"]],
             "psycho_features": [PSYCHO_HUMAN_NAMES.get(c, c) for c in details["psycho_cols"]],
-            "attention_scores": attn_matrix.tolist(),
+            "attention_scores": attn_matrix.tolist() if attn_matrix is not None else [],
+            "distress_evaluation": details.get("distress_evaluation"),
         }

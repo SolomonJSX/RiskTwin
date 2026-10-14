@@ -14,8 +14,12 @@ class EarlyWarningScoringModel(IScoringModel):
 
     def __init__(self):
         base_dir = Path(__file__).resolve().parent.parent.parent.parent
-        model_path = base_dir / "models" / "early_warning_lgbm.pkl"
-        cols_path = base_dir / "models" / "feature_columns.pkl"
+        model_path = base_dir / "models" / "archive" / "early_warning_lgbm.pkl"
+        if not model_path.exists():
+            model_path = base_dir / "models" / "early_warning_lgbm.pkl"
+        cols_path = base_dir / "models" / "archive" / "feature_columns.pkl"
+        if not cols_path.exists():
+            cols_path = base_dir / "models" / "feature_columns.pkl"
 
         if model_path.exists() and cols_path.exists():
             with open(model_path, "rb") as f:
